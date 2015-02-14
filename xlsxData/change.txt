@@ -1,0 +1,11 @@
+NeuroLINCS:
+correct perturbagens count for:
+	iMN toxicity as determined by RM
+	iMN glutamate toxicity- Excitotoxicity
+	iMN Tunicamycin Toxicity: ER Stress
+
+	Rseq for control and diseased iMNs plus perturbations
+
+
+
+

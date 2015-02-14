@@ -8,4 +8,11 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'getDocs',
 			console.log(docs);
 		});
 
+		$scope.getters = {
+			release: function(value){
+				if(value["release-date"]=="TBD") return new Date("6/29/2100")
+				else return new Date(value["release-date"]);
+			}
+		}
+
 }]);

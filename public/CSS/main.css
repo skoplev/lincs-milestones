@@ -6,3 +6,16 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+.st-sort-ascent:before{
+    content: '\25B2';
+}
+
+.st-sort-descent:before{
+    content: '\25BC';
+}
+
+th{
+	cursor:default;
+}

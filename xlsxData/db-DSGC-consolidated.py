@@ -4,9 +4,10 @@ import csv
 from pymongo import MongoClient
 from datetime import datetime
 
-client = MongoClient('mongodb://localhost:27017/')
-db = client['db-DSGC']
-md = db["milestones-data"]
+client = MongoClient('mongodb://readWriteUser:askQiaonan@10.91.53.62/LINCS')
+#client = MongoClient('mongodb://readWriteAny:onlyQiaonanKnows@127.0.0.1')
+db = client['LINCS']
+md = db["milestones"]
 md.drop()
 
 dInit = {}
