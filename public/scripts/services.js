@@ -7,7 +7,7 @@ services.factory('getDocs',['$http', '$q','$location',
 		
 		function getDocs(){
 			var deferred = $q.defer();
-			$http.get($location.path()+'/docs')
+			$http.get($location.absUrl()+'docs')
 					.success(function(data){
 				deferred.resolve(transform(data));
 			})

@@ -1,4 +1,4 @@
-var mongo = require('query-mongo')
+var mongo = require('./query-mongo.js')
 
 exports.docs = function(req,res){
 	res.header('Access-Control-Allow-Origin','*');
