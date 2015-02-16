@@ -94,7 +94,10 @@ function transformByKey(key,doc){
 			// consider changing the structure of cell-lines-meta 
 			// to the same as perturbagens-meta.
 			if("cell-lines-meta" in doc){
-				return doc["cell-lines-meta"];
+				return _.map(doc["cell-lines-meta"],function(countObj){
+					if(countObj.type=="ips-differentiated") countObj.type="iPSC, differentiated";
+					return countObj;
+				});
 			}else return [{count:"TBD",type:"TBD"}]
 		},
 
