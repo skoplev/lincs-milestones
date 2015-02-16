@@ -13,17 +13,19 @@ services.factory('centerUrls',function(){
 });
 
 var transforms;
-services.factory('getDocs',['$http', '$q','$location',
+services.factory('getSource',['$http', '$q','$location',
 	function($http,$q,$location){
 		
-		function getDocs(){
-			var deferred = $q.defer();
-			$http.get($location.absUrl()+'docs')
-					.success(function(data){
-				deferred.resolve(transform(data));
+		var deferred = $q.defer();
+		
+		$http.get($location.absUrl()+'docs')
+				.success(function(data){
+			deferred.resolve({
+				transformed:transform(data),
+				summary: summary(data)
 			})
-			return deferred.promise;
-		}
+		})
+		
 
 		function transform(docs){
 			return _.map(docs,function(doc){
@@ -44,7 +46,34 @@ services.factory('getDocs',['$http', '$q','$location',
 			});
 		}
 
-		return getDocs;
+		function summary(raw){
+			var count = {};
+			var assays = {};
+			count.center = 6;
+
+			raw.forEach(function(e){
+				var assayName = e["assay"]
+				assays[assayName] = {};
+				assays[assayName].perturbagensCount = transformByKey("perturbagens-count",e);
+				assays[assayName].cellLinesCount = transformByKey("cell-lines-count",e);
+			});
+
+			count.assays = Object.keys(assays).length;
+			var sum = function(assays,key){
+				return _.reduce(assays,function(memo,assay){
+					var total = 0;
+					assay[key].forEach(function(count){
+						if(count.count!="TBD") total = total+count.count;
+					})
+					return memo+total;
+				},0);
+			}
+			count.cellLines = sum(assays,"cellLinesCount");
+			count.perturbagens = sum(assays,"perturbagensCount");
+			return count;
+		}
+
+		return deferred.promise;
 }]);
 
 
@@ -105,23 +134,38 @@ function transformByKey(key,doc){
 			}else return "TBD";
 		}
 
-		// "perturbagens-count":function(){
-		// 	if("perturbagens-meta" in doc && "count-type" in doc["perturbagens-meta"]){
-		// 		return _.reduce(doc["perturbagens-meta"]["count-type"],
-		// 			function(memo,count){return memo+count.count},0);
-		// 	}else return "TBD"
-		// },
-
-		// "perturbagens-type":function(){
-		// 	if("perturbagens-meta" in doc && "count-type" in doc["perturbagens-meta"]){
-		// 		return _.map(doc["perturbagens-meta"]["count-type"],function(count){
-		// 			return count.type
-		// 		});
-		// 	}else return ["TBD"]
-		// },
-
-
 	}
 	
 	return transforms[key]();
 }
+
+
+// function extractByKey(accumulator,key,doc){
+// 	var extract = {
+// 		"perturbagens":function(){
+// 			if("perturbagens" in doc){
+// 				accumulator = accumulator.concat(_.map(doc["perturbagens"],function(perturbagen){
+// 					return perturbagen.name;
+// 				}));
+// 			}
+// 			return accumulator
+// 		},
+
+// 		"cell-lines":function(){
+// 			var isValid = function(firstCellLine){
+// 				if(firstCellLine==" Which four? Birtwistle unsure of structure") return false;
+// 				else return true;
+// 			}
+
+// 			if("cell-lines" in doc && isValid(doc["cell-lines"][0])){
+// 				accumulator = accumulator.concat(_.map(doc["cell-lines"],function(cellLine){
+// 					return cellLine.name;
+// 				}))
+// 			}
+
+// 			return accumulator
+// 		}
+// 	}
+
+// 	return extract[key]();
+// }

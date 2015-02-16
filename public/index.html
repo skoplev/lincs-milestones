@@ -21,6 +21,23 @@
     <script src="scripts/controllers.js"></script>
 </head>
 <body ng-controller="tableCtrl">
+    <div class="download-spreadsheets"> 
+        <a href="data/Milestones.zip">Download All Milestones SpreadSheets</a>
+    </div>
+    <p>
+        <h4> Summary </h4>
+        <table class="table ">
+            <tbody>
+                <tr>
+                    <td>Center: {{summary.center}}</td>
+                    <td>Assays: {{summary.assays}}</td>
+                    <td>Perturbagens: ~{{summary.perturbagens}}</td>
+                    <td>Cell-lines: ~{{summary.cellLines}}</td>
+                </tr>
+            </tr>
+        </table>
+
+    </p>
 
     <table st-table="displayedDocs" st-safe-src="docs"  class="table table-striped">
         <thead>

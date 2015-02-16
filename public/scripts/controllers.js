@@ -1,11 +1,12 @@
 var indexControllers = angular.module('indexControllers', ["services"]);
 
-indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerUrls', 'getDocs',
-	function($scope,$modal,centerUrls,getDocs){
+indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerUrls', 'getSource',
+	function($scope,$modal,centerUrls,getSource){
 
-		getDocs().then(function(docs){
-			$scope.docs = docs;
-			console.log(docs);
+		getSource.then(function(source){
+			$scope.docs = source.transformed;
+			$scope.summary = source.summary;
+			console.log($scope.docs);
 		});
 
 		$scope.centerUrls = centerUrls;

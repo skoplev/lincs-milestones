@@ -19,3 +19,9 @@ a {
 th{
 	cursor:default;
 }
+
+.download-spreadsheets{
+	position: absolute;
+	top:5px;
+	right:10px;
+}
