@@ -5,7 +5,6 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerUrls', 'get
 
 		getSource.then(function(source){
 			$scope.centerUrls = centerUrls;
-			console.log(centerUrls);
 			$scope.docs = source.transformed;
 			$scope.summary = {
 			    center: 0,
@@ -13,7 +12,6 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerUrls', 'get
 		        cellLines: 0,
 		        perturbagens: 0
 			};
-			console.log($scope.docs);
 
             function countUpTo(field, count, max, step, time) {
                 setTimeout(function() {
