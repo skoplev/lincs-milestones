@@ -6,7 +6,7 @@ services.factory('centerUrls',function(){
 		"Broad - Golub":"http://www.lincscloud.org/",
 		"Broad - Jaffe":"http://www.broadinstitute.org/~jjaffe/",
 		"HMS - Sorger":"http://lincs.hms.harvard.edu/",
-		"MSSM - Iyengar":"http://research.mssm.edu/pst/DToxS/index.htm",
+		"ISMMS - Iyengar":"http://research.mssm.edu/pst/DToxS/index.htm",
 		"OHSU - Gray":"http://www.ohsu.edu/xd/education/schools/school-of-medicine/departments/basic-science-departments/biomedical-engineering/spatial-systems-biomedicine/",
 		"UCIrvine - Thompson":"http://www.faculty.uci.edu/profile.cfm?faculty_id=4708",
 	}
