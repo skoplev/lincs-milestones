@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="row">
-            <h1 class="col-md-12">LINCS Data Release Milestones</h1>
+            <h1 class="col-md-12 milestones-title">LINCS Data Release Milestones</h1>
             <table class="table col-md-12" id="summary">
                 <tbody>
                     <tr>
@@ -62,9 +62,10 @@
                         <th>Cell-lines</th>
                         <th>Readouts</th>
                         <th st-sort="getters.release">Release</th>
+                        <th>Status</th>
                     </tr>
                     <tr>
-                        <th colspan="6">
+                        <th colspan="7">
                             <input placeholder="Global search. Example keywords: image, gene expression, phospho, etc.        Table can be sortable by Center and Release" st-search type="search" class="form-control" />
                         </th>
                     </tr>
@@ -89,6 +90,7 @@
                             </div>
                         </td>
                         <td>{{doc['release-date']}}</td>
+                        <td><span class="label label-warning"> In Production </span></td>
                     </tr>
                 </tbody>
             </table>
