@@ -4,6 +4,8 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerUrls', 'get
 	function($scope,$modal,centerUrls,getSource){
 
 		getSource.then(function(source){
+			$scope.centerUrls = centerUrls;
+			console.log(centerUrls);
 			$scope.docs = source.transformed;
 			$scope.summary = {
 			    center: 0,
@@ -34,7 +36,7 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerUrls', 'get
             countUpTo('cellLines', 0, source.summary.cellLines, 5, 10);
 		});
 
-		$scope.centerUrls = centerUrls;
+		
 
 		$scope.getters = {
 			release: function(value){
