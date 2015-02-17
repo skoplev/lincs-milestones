@@ -43,5 +43,10 @@ th {
     text-transform: uppercase;
 }
 .center-name {
-    width: 100px;
+    width: 130px;
+}
+
+.logo{
+	width:25px;
+	margin-right:5px;
 }
