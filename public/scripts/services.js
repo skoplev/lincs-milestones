@@ -23,19 +23,20 @@ services.factory('centerMap',function(){
 });
 
 var transforms;
-services.factory('getSource',['$http', '$q','$location',
-	function($http,$q,$location){
-		
+services.factory('getSource',['$http', '$q',
+	function($http,$q){
+
 		var deferred = $q.defer();
-		
-		$http.get($location.absUrl()+'docs')
+
+		var baseUrl = window.location.origin+'/milestones/'
+		$http.get(baseUrl+'docs')
 				.success(function(data){
 			deferred.resolve({
 				transformed:transform(data),
 				summary: summary(data)
 			})
 		})
-		
+
 
 		function transform(docs){
 			return _.map(docs,function(doc){
@@ -45,7 +46,7 @@ services.factory('getSource',['$http', '$q','$location',
 
 				transformed["cell-lines"] = transformByKey("cell-lines",doc);
 				transformed["cell-lines-count"] = transformByKey("cell-lines-count",doc);
-				
+
 				transformed["perturbagens"] = transformByKey("perturbagens",doc);
 				transformed["perturbagens-count"] = transformByKey("perturbagens-count",doc);
 
@@ -101,7 +102,7 @@ function transformByKey(key,doc){
 		},
 
 		"cell-lines-count":function(){
-			// consider changing the structure of cell-lines-meta 
+			// consider changing the structure of cell-lines-meta
 			// to the same as perturbagens-meta.
 			if("cell-lines-meta" in doc){
 				return _.map(doc["cell-lines-meta"],function(countObj){
@@ -148,7 +149,7 @@ function transformByKey(key,doc){
 		}
 
 	}
-	
+
 	return transforms[key]();
 }
 
