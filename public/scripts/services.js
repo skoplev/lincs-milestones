@@ -23,12 +23,12 @@ services.factory('centerMap',function(){
 });
 
 var transforms;
-services.factory('getSource',['$http', '$q',
-	function($http,$q){
+services.factory('getSource',['$http', 'dateFilter','$q',
+	function($http,dateFilter,$q){
 
 		var deferred = $q.defer();
 
-		var baseUrl = window.location.origin+'/milestones/'
+		var baseUrl = window.location.href
 		$http.get(baseUrl+'docs')
 				.success(function(data){
 			deferred.resolve({
