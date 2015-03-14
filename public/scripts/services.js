@@ -28,7 +28,8 @@ services.factory('getSource',['$http', 'dateFilter','$q',
 
 		var deferred = $q.defer();
 
-		var baseUrl = window.location.href
+		var idx = window.location.href.lastIndexOf('/');
+		var baseUrl = window.location.href.slice(0,idx+1);
 		$http.get(baseUrl+'docs')
 				.success(function(data){
 			deferred.resolve({
