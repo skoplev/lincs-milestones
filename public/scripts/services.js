@@ -53,6 +53,7 @@ services.factory('getSource',['$http', 'dateFilter','$q',
 
 				transformed["readouts"] = transformByKey("readouts",doc);
 				transformed["release-date"] = transformByKey("release-date",doc);
+				transformed["release-link"] = doc["release-link"];
 
 				return transformed
 			});
@@ -148,7 +149,6 @@ function transformByKey(key,doc){
 				})).toLocaleDateString();
 			}else return "TBD";
 		}
-
 	}
 
 	return transforms[key]();
