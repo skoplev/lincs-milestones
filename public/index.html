@@ -61,8 +61,8 @@
                         <th>Assay</th>
                         <th>Perturbagens</th>
                         <th>Cell-lines</th>
-                        <th>Readouts<sup>***</sup></th>
-                        <th st-sort="getters.release">Release</th>
+                        <th>Readouts</th>
+                        <th st-sort="getters.release">Release<sup>***</sup></th>
                         <th>Status</th>
                     </tr>
                     <tr>
@@ -96,7 +96,7 @@
                         <td style="min-width: 80px;">
 				<span ng-if="!(doc['release-link'])" class="label label-warning"> In Production </span>
 				<a ng-if="doc['release-link']" style="width: 80px;"
-                    class="label label-success" ng-href="{{doc['release-link']}}">    Released   </span>
+                    class="label label-success" ng-href="{{doc['release-link']}}">    Available   </span>
 			</td>
                     </tr>
                 </tbody>
