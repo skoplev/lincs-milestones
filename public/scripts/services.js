@@ -4,20 +4,20 @@ var services = angular.module('services', []);
 services.factory('centerMap',function(){
 	return {
 		urls:{
-			"Broad-Golub":"http://www.lincscloud.org/",
-			"Broad-Jaffe":"http://www.broadinstitute.org/~jjaffe/",
-			"HMS-Sorger":"http://lincs.hms.harvard.edu/",
-			"ISMMS-Iyengar":"http://research.mssm.edu/pst/DToxS/index.htm",
-			"OHSU-Gray":"http://www.ohsu.edu/xd/education/schools/school-of-medicine/departments/basic-science-departments/biomedical-engineering/spatial-systems-biomedicine/",
-			"UCIrvine-Thompson":"http://www.faculty.uci.edu/profile.cfm?faculty_id=4708"
+			"Broad-LINCS-Transcriptomics":"http://www.lincscloud.org/",
+			"Broad-LINCS-PCCSE":"http://www.broadinstitute.org/~jjaffe/",
+			"HMS-LINCS":"http://lincs.hms.harvard.edu/",
+			"DTOXS":"http://research.mssm.edu/pst/DToxS/index.htm",
+			"MEP-LINCS":"http://www.ohsu.edu/xd/education/schools/school-of-medicine/departments/basic-science-departments/biomedical-engineering/spatial-systems-biomedicine/",
+			"NeuroLINCS":"http://www.faculty.uci.edu/profile.cfm?faculty_id=4708"
 		},
 		logos:{
-			"Broad-Golub":"CSS/img/Broad.jpg",
-			"Broad-Jaffe":"CSS/img/Broad.jpg",
-			"HMS-Sorger":"CSS/img/harvard.png",
-			"ISMMS-Iyengar":"CSS/img/ISMMS.png",
-			"OHSU-Gray":"CSS/img/ohsu.jpg",
-			"UCIrvine-Thompson":"CSS/img/UCI.jpg"
+			"Broad-LINCS-Transcriptomics":"CSS/img/Broad.jpg",
+			"Broad-LINCS-PCCSE":"CSS/img/Broad.jpg",
+			"HMS-LINCS":"CSS/img/harvard.png",
+			"DTOXS":"CSS/img/ISMMS.png",
+			"MEP-LINCS":"CSS/img/ohsu.jpg",
+			"NeuroLINCS":"CSS/img/UCI.jpg"
 		}
 	}
 });
