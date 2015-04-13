@@ -4,14 +4,14 @@
 var coll;
 var connectDeferred = q.defer();
 // point to falafel server
-MongoClient.connect('mongodb://mmcdermott:kroyweN@master/LINCS',
+MongoClient.connect('mongodb://readWriteUser:askQiaonan@loretta/LINCS',
 	function(err,db){
 		if(err) {
             connectDeferred.reject(err);
         } else {
-            connectDeferred.resolve(db.collection("milestones-PreRelease"));
+            connectDeferred.resolve(db.collection("milestones"));
         }
-		coll = db.collection("milestones-PreRelease");
+		coll = db.collection("milestones");
 		
 		
 		exports.getAll=function(){
