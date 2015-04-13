@@ -4,7 +4,7 @@
 var coll;
 var connectDeferred = q.defer();
 // point to falafel server
-MongoClient.connect('mongodb://readWriteUser:askQiaonan@loretta/LINCS',
+MongoClient.connect('mongodb://readWriteUser:askQiaonan@localhost/LINCS',
 	function(err,db){
 		if(err) {
             connectDeferred.reject(err);
