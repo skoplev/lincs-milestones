@@ -55,6 +55,8 @@ services.factory('getSource',['$http', 'dateFilter','$q',
 				transformed["release-date"] = transformByKey("release-date",doc);
 				transformed["release-link"] = doc["release-link"];
 
+				transformed['id'] = doc['_id'];
+
 				return transformed
 			});
 		}
@@ -97,9 +99,7 @@ function transformByKey(key,doc){
 	var transforms = {
 		"cell-lines":function(){
 			if("cell-lines" in doc){
-				return _.map(doc["cell-lines"],function(cellLine){
-					return cellLine.name
-				});
+				return doc["cell-lines"]
 			}else return ["TBD"]
 		},
 

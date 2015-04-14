@@ -58,9 +58,9 @@
                 <thead>
                     <tr>
                         <th st-sort="center">Center</th>
-                        <th>Dataset</th>
+                        <th>Assay/Dataset</th>
                         <th>Perturbagens</th>
-                        <th>Cell-lines</th>
+                        <th>Cells</th>
                         <th>Readouts</th>
                         <th st-sort="getters.release">Release<sup>***</sup></th>
                         <th>Status</th>
@@ -82,21 +82,27 @@
                             </div>
                         </td>
                         <td>
+                            <a ng-click="showCells(doc['cell-lines'])" class="clickable">
                             <div class="displayed-data" ng-repeat="count in doc['cell-lines-count']">
+
                                 <p class="cell-data" ng-if="!(count.type === 'TBD' && count.count === 'TBD')">{{count.type+" : "+count.count}}</p>
 				<p class="cell-data" ng-if="(count.type === 'TBD' && count.count === 'TBD')">TBD</p>
+                            </div>
                             </div>
                         </td>
                         <td>
                             <div class="displayed-data" ng-repeat="readout in doc['readouts']">
                                 {{readout}}
-                            </div>
+                            </a>
                         </td>
                         <td class="displayed-data"><p class="cell-data">{{doc['release-date']}}</p></td>
                         <td style="min-width: 80px;">
 				<span ng-if="!(doc['release-link'])" class="label label-warning"> In Production </span>
-				<a ng-if="doc['release-link']" style="width: 80px;"
-                    class="label label-success" ng-href="{{doc['release-link']}}">    Available   </span>
+                <div ng-if="doc['release-link']">
+				    <a  style="width: 80px;"
+                    class="label label-success" ng-href="{{doc['release-link']}}">    Available   </a>
+                    <div style="font-size:0.9em"> (ID: {{extractID(doc['release-link'])}})</div>
+                </div>
 			</td>
                     </tr>
                 </tbody>

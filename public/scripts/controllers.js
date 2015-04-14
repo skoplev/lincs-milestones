@@ -1,5 +1,6 @@
 var indexControllers = angular.module('indexControllers', ["services"]);
-
+var idx = window.location.href.lastIndexOf('/');
+var baseURL = window.location.href.slice(0,idx+1);
 indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getSource',
 	function($scope,$modal,centerMap,getSource){
 
@@ -43,4 +44,62 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
 			}
 		}
 
+		$scope.extractID = function(link){
+			return link.split('/').splice(-2,1)[0];
+		}
+
+		var getCommonKeys = function(items){
+			// get common keys of item objects.
+			var keyCount = {};
+			items.forEach(function(item){
+				var keys = Object.keys(item);
+				keys.forEach(function(key){
+					if(!(key in keyCount)) keyCount[key] = 1;
+					else keyCount[key] +=1;
+				});
+			});
+			var itemCount = items.length;
+			var commonKeys = [];
+			Object.keys(keyCount).forEach(function(key){
+				if(keyCount[key]>=itemCount/2)
+					commonKeys.push(key);
+			});
+			return commonKeys;
+		};
+
+		$scope.showCells = function(cells){
+			cells.forEach(function(cell){
+				delete cell["$$hashKey"];
+			});
+			var modalInstance = $modal.open({
+      			templateUrl: baseURL+'cells.html',
+      			controller: 'cellsModalCtrl',
+      			resolve:{
+      				cells: function(){
+      					return cells;
+      				},
+      				commonKeys:function(){
+      					return getCommonKeys(cells);
+      				},
+      			}
+    		});
+		}
+
+
+}])
+.controller('cellsModalCtrl', 
+	['$scope', '$modalInstance', 'cells', 'commonKeys', 
+	function($scope, $modalInstance, cells, commonKeys) {
+ 	var order = ['name','type','tissue', 'class'];
+ 	var orderedKeys = [];
+ 	order.forEach(function(key){
+ 		if(_.contains(commonKeys,key))
+ 			orderedKeys.push(key);
+ 	});
+ 	orderedKeys = orderedKeys.concat(_.difference(commonKeys,order));
+ 	$scope.keys = orderedKeys;
+ 	$scope.cells = cells;
+ 	$scope.cancel = function () {
+    	$modalInstance.dismiss('cancel');
+  	};
 }]);
