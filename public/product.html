@@ -52,9 +52,9 @@
                 <thead>
                     <tr>
                         <th st-sort="center">Center</th>
-                        <th>Assay</th>
+                        <th>Assay/Dataset</th>
                         <th>Perturbagens</th>
-                        <th>Cell-lines</th>
+                        <th>Cells</th>
                         <th>Readouts</th>
                         <th st-sort="getters.release">Release<sup>***</sup></th>
                         <th>Status</th>
@@ -67,30 +67,38 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="doc in displayedDocs">
-                        <td class="center-name"><a href="{{centerMap.urls[doc['center']]}}" target="_blank"><img class="logo" ng-src="{{centerMap.logos[doc['center']]}}" />{{doc["center"]}}</a></td>
-                        <td><p class="cell-data">{{doc['assay']}}</p></td>
+                        <td class="center-name displayed-data"><a href="{{centerMap.urls[doc['center']]}}" target="_blank"><img class="logo" ng-src="{{centerMap.logos[doc['center']]}}" />{{doc["center"]}}</a></td>
+                        <td class="displayed-data"><p class="cell-data">{{doc['assay']}}</p></td>
                         <td>
-                            <div ng-repeat="count in doc['perturbagens-count']">
+                            <a ng-click="showPerturbagens(doc['perturbagens'])" class="clickable">
+                            <div class="displayed-data" ng-repeat="count in doc['perturbagens-count']">
                                 <p class="cell-data" ng-if="!(count.type === 'TBD' && count.count === 'TBD')">{{count.type+" : "+count.count}}</p>
 				<p class="cell-data" ng-if="(count.type === 'TBD' && count.count === 'TBD')">TBD</p>
                             </div>
+                            </a>
                         </td>
                         <td>
-                            <div ng-repeat="count in doc['cell-lines-count']">
+                            <a ng-click="showCells(doc['cell-lines'])" class="clickable">
+                            <div class="displayed-data" ng-repeat="count in doc['cell-lines-count']">
+
                                 <p class="cell-data" ng-if="!(count.type === 'TBD' && count.count === 'TBD')">{{count.type+" : "+count.count}}</p>
 				<p class="cell-data" ng-if="(count.type === 'TBD' && count.count === 'TBD')">TBD</p>
                             </div>
-                        </td>
-                        <td>
-                            <div ng-repeat="readout in doc['readouts']">
-                                <p class="cell-data">{{readout}}</p>
                             </div>
                         </td>
-                        <td><p class="cell-data">{{doc['release-date']}}</p></td>
+                        <td>
+                            <div class="displayed-data" ng-repeat="readout in doc['readouts']">
+                                {{readout}}
+                            </a>
+                        </td>
+                        <td class="displayed-data"><p class="cell-data">{{doc['release-date']}}</p></td>
                         <td style="min-width: 80px;">
 				<span ng-if="!(doc['release-link'])" class="label label-warning"> In Production </span>
-				<a ng-if="doc['release-link']" style="width: 80px;"
-                    class="label label-success" ng-href="{{doc['release-link']}}" target="_blank">    Available   </span>
+                <div ng-if="doc['release-link']">
+				    <a  style="width: 80px;"
+                    class="label label-success" href="{{doc['release-link']}}" target="_blank">    Available   </a>
+                    <div style="font-size:0.9em"> (ID: {{extractID(doc['release-link'])}})</div>
+                </div>
 			</td>
                     </tr>
                 </tbody>
@@ -111,4 +119,3 @@
     </div>
 </body>
 </html>
-

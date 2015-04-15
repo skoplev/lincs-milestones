@@ -1,0 +1,34 @@
+<div class="modal-header cell-modal-header" style="border-bottom-width:0">
+	<button type="button" class="close"   ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<h4 class="modal-title example-header">Cells in this Assay/Dataset:</h4>
+</div>
+<div class="modal-body custom-modal-body">
+  <table st-table="displayedEntries" st-safe-src="cells" class="table">
+      <thead>
+          <tr>
+              <th ng-repeat="key in keys" ng-if="key!=$$hashKey">{{key}}</th>
+          </tr>
+            <tr ng-if="cells.length>24">
+                 <th colspan="2">
+                 <input  placeholder="Search" st-search type="search" class="form-control" />
+                  </th>
+            </tr>
+       </thead>
+       <tbody>
+          <tr st-select-row="entry" st-selected-entry="selectedEntry" ng-repeat="entry in displayedEntries">
+              <td ng-repeat="key in keys">{{entry[key]?entry[key]:"TBD"}}</td>
+            </tr>
+       </tbody>
+        <tfoot ng-if="cells.length>12">
+            <tr>
+              <td colspan="2">               
+                <div st-pagination="" st-items-by-page="12" st-displayed-pages="" class="custom-pagination"></div>
+              </td>
+            </tr>
+        </tfoot>
+       </table>
+</div>
+<div class="modal-footer">
+	<!-- <button class="btn btn-primary" ng-click="ok()">Search</button> -->
+    <!-- <button class="btn btn-warning" ng-click="cancel()">Cancel</button> -->
+</div>

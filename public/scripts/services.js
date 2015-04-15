@@ -55,6 +55,8 @@ services.factory('getSource',['$http', 'dateFilter','$q',
 				transformed["release-date"] = transformByKey("release-date",doc);
 				transformed["release-link"] = doc["release-link"];
 
+				transformed['id'] = doc['_id'];
+
 				return transformed
 			});
 		}
@@ -97,8 +99,11 @@ function transformByKey(key,doc){
 	var transforms = {
 		"cell-lines":function(){
 			if("cell-lines" in doc){
-				return _.map(doc["cell-lines"],function(cellLine){
-					return cellLine.name
+				return _.sortBy(doc["cell-lines"],function(cell){
+					if("name" in cell)
+						return cell.name.toLowerCase();
+					else
+						return 'zzz';
 				});
 			}else return ["TBD"]
 		},
@@ -117,8 +122,11 @@ function transformByKey(key,doc){
 
 		"perturbagens":function(){
 			if("perturbagens" in doc){
-				return _.map(doc["perturbagens"],function(perturbagen){
-					return perturbagen.name
+				return _.sortBy(doc['perturbagens'],function(perturbagen){
+					if("name" in perturbagen)
+						return S(perturbagen.name).trim().s.toLowerCase();
+					else
+						return 'zzz';
 				});
 			}else return ["TBD"]
 		},
