@@ -3,7 +3,7 @@
 	<h4 class="modal-title example-header">Perturbagens in this Assay/Dataset:</h4>
 </div>
 <div class="modal-body custom-modal-body">
-  <table st-table="perturbagens" class="table">
+  <table st-table="displayedEntries" st-safe-src="perturbagens" class="table">
       <thead>
           <tr>
               <th ng-repeat="key in keys" ng-if="key!=$$hashKey">{{key}}</th>
@@ -13,8 +13,9 @@
                  <input  placeholder="Search" st-search type="search" class="form-control" />
                   </th>
             </tr>
+       </thead>
        <tbody>
-          <tr st-select-row="entry" st-selected-entry="selectedEntry" ng-repeat="entry in perturbagens">
+          <tr st-select-row="entry" st-selected-entry="selectedEntry" ng-repeat="entry in displayedEntries">
               <td ng-repeat="key in keys">{{entry[key]?entry[key]:"TBD"}}</td>
             </tr>
        </tbody>

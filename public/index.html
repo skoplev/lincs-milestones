@@ -102,7 +102,7 @@
 				<span ng-if="!(doc['release-link'])" class="label label-warning"> In Production </span>
                 <div ng-if="doc['release-link']">
 				    <a  style="width: 80px;"
-                    class="label label-success" ng-href="{{doc['release-link']}}">    Available   </a>
+                    class="label label-success" href="{{doc['release-link']}}" target="_blank">    Available   </a>
                     <div style="font-size:0.9em"> (ID: {{extractID(doc['release-link'])}})</div>
                 </div>
 			</td>
