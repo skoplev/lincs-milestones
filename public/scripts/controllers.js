@@ -125,6 +125,7 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
  	orderedKeys = orderedKeys.concat(_.difference(commonKeys,order));
  	$scope.keys = orderedKeys;
  	$scope.cells = cells;
+ 	$scope.cellCount = cells.length;
  	$scope.cancel = function () {
     	$modalInstance.dismiss('cancel');
   	};
@@ -141,6 +142,7 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
  	orderedKeys = orderedKeys.concat(_.difference(commonKeys,order));
  	$scope.keys = orderedKeys;
  	$scope.perturbagens = perturbagens;
+ 	$scope.perturbagenCount = perturbagens.length;
  	$scope.cancel = function () {
     	$modalInstance.dismiss('cancel');
   	};
