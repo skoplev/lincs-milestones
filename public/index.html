@@ -76,10 +76,12 @@
                         <td class="center-name displayed-data"><a href="{{centerMap.urls[doc['center']]}}" target="_blank"><img class="logo" ng-src="{{centerMap.logos[doc['center']]}}" />{{doc["center"]}}</a></td>
                         <td class="displayed-data"><p class="cell-data">{{doc['assay']}}</p></td>
                         <td>
+                            <a ng-click="showPerturbagens(doc['perturbagens'])" class="clickable">
                             <div class="displayed-data" ng-repeat="count in doc['perturbagens-count']">
                                 <p class="cell-data" ng-if="!(count.type === 'TBD' && count.count === 'TBD')">{{count.type+" : "+count.count}}</p>
 				<p class="cell-data" ng-if="(count.type === 'TBD' && count.count === 'TBD')">TBD</p>
                             </div>
+                            </a>
                         </td>
                         <td>
                             <a ng-click="showCells(doc['cell-lines'])" class="clickable">

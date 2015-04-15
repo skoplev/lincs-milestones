@@ -85,6 +85,24 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
     		});
 		}
 
+		$scope.showPerturbagens = function(perturbagens){
+			perturbagens.forEach(function(perturbagen){
+				delete perturbagen["$$hashKey"];
+			});
+			var modalInstance = $modal.open({
+      			templateUrl: baseURL+'perturbagens.html',
+      			controller: 'perturbagensModalCtrl',
+      			resolve:{
+      				perturbagens: function(){
+      					return perturbagens;
+      				},
+      				commonKeys:function(){
+      					return getCommonKeys(perturbagens);
+      				},
+      			}
+    		});
+		}
+
 
 }])
 .controller('cellsModalCtrl', 
@@ -102,4 +120,21 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
  	$scope.cancel = function () {
     	$modalInstance.dismiss('cancel');
   	};
+}])
+.controller('perturbagensModalCtrl', 
+	['$scope', '$modalInstance', 'perturbagens', 'commonKeys', 
+	function($scope, $modalInstance, perturbagens, commonKeys) {
+ 	var order = ['name','type'];
+ 	var orderedKeys = [];
+ 	order.forEach(function(key){
+ 		if(_.contains(commonKeys,key))
+ 			orderedKeys.push(key);
+ 	});
+ 	orderedKeys = orderedKeys.concat(_.difference(commonKeys,order));
+ 	$scope.keys = orderedKeys;
+ 	$scope.perturbagens = perturbagens;
+ 	$scope.cancel = function () {
+    	$modalInstance.dismiss('cancel');
+  	};
 }]);
+

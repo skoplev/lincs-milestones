@@ -99,7 +99,12 @@ function transformByKey(key,doc){
 	var transforms = {
 		"cell-lines":function(){
 			if("cell-lines" in doc){
-				return doc["cell-lines"]
+				return _.sortBy(doc["cell-lines"],function(cell){
+					if("name" in cell)
+						return cell.name.toLowerCase();
+					else
+						return 'zzz';
+				});
 			}else return ["TBD"]
 		},
 
@@ -117,8 +122,11 @@ function transformByKey(key,doc){
 
 		"perturbagens":function(){
 			if("perturbagens" in doc){
-				return _.map(doc["perturbagens"],function(perturbagen){
-					return perturbagen.name
+				return _.sortBy(doc['perturbagens'],function(perturbagen){
+					if("name" in perturbagen)
+						return S(perturbagen.name).trim().s.toLowerCase();
+					else
+						return 'zzz';
 				});
 			}else return ["TBD"]
 		},
