@@ -68,6 +68,10 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
 		};
 
 		$scope.showCells = function(cells){
+			if(cells[0]=="TBD"){
+				// normalize the input format for modal
+				cells = [{name:"TBD"}];
+			}
 			cells.forEach(function(cell){
 				delete cell["$$hashKey"];
 			});
@@ -86,6 +90,10 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
 		}
 
 		$scope.showPerturbagens = function(perturbagens){
+			if(perturbagens[0]=="TBD"){
+			// normalize the input format for modal
+				perturbagens = [{name:"TBD"}]
+			}
 			perturbagens.forEach(function(perturbagen){
 				delete perturbagen["$$hashKey"];
 			});
