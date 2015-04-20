@@ -4,19 +4,19 @@ var services = angular.module('services', []);
 services.factory('centerMap',function(){
 	return {
 		urls:{
-			"Broad-LINCS-Transcriptomics":"http://www.lincscloud.org/",
-			"Broad-LINCS-PCCSE":"http://www.lincsproject.org/centers/data-and-signature-generating-centers/broad-prx/",
-			"HMS-LINCS":"http://lincs.hms.harvard.edu/",
+			"Broad LINCS Transcriptomics":"http://www.lincscloud.org/",
+			"Broad LINCS PCCSE":"http://www.lincsproject.org/centers/data-and-signature-generating-centers/broad-prx/",
+			"HMS LINCS":"http://lincs.hms.harvard.edu/",
 			"DTOXS":"http://research.mssm.edu/pst/DToxS/index.htm",
-			"MEP-LINCS":"http://www.lincsproject.org/centers/data-and-signature-generating-centers/oregon-u/",
+			"MEP LINCS":"http://www.lincsproject.org/centers/data-and-signature-generating-centers/oregon-u/",
 			"NeuroLINCS":"http://www.lincsproject.org/centers/data-and-signature-generating-centers/neurolincs/"
 		},
 		logos:{
-			"Broad-LINCS-Transcriptomics":"CSS/img/Broad.jpg",
-			"Broad-LINCS-PCCSE":"CSS/img/JAFFE-LINCS-CenterIcon.png",
-			"HMS-LINCS":"CSS/img/hms_lincs.png",
+			"Broad LINCS Transcriptomics":"CSS/img/Broad.jpg",
+			"Broad LINCS PCCSE":"CSS/img/JAFFE-LINCS-CenterIcon.png",
+			"HMS LINCS":"CSS/img/hms_lincs.png",
 			"DTOXS":"CSS/img/DTOXS_Logo.PNG",
-			"MEP-LINCS":"CSS/img/ohsu.jpg",
+			"MEP LINCS":"CSS/img/ohsu.jpg",
 			"NeuroLINCS":"CSS/img/NeuroLINCS.png"
 		}
 	}

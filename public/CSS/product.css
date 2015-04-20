@@ -9,6 +9,10 @@ body{
 
 .cell-data {
 	/*font-size: 12px;*/
+  max-width: 350px;
+}
+.assay-cell{
+  width:350px;
 }
 
 h1{
