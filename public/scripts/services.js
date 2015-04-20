@@ -13,11 +13,11 @@ services.factory('centerMap',function(){
 		},
 		logos:{
 			"Broad-LINCS-Transcriptomics":"CSS/img/Broad.jpg",
-			"Broad-LINCS-PCCSE":"CSS/img/Broad.jpg",
-			"HMS-LINCS":"CSS/img/harvard.png",
-			"DTOXS":"CSS/img/ISMMS.png",
+			"Broad-LINCS-PCCSE":"CSS/img/JAFFE-LINCS-CenterIcon.png",
+			"HMS-LINCS":"CSS/img/hms_lincs.png",
+			"DTOXS":"CSS/img/DTOXS_Logo.PNG",
 			"MEP-LINCS":"CSS/img/ohsu.jpg",
-			"NeuroLINCS":"CSS/img/UCI.jpg"
+			"NeuroLINCS":"CSS/img/NeuroLINCS.png"
 		}
 	}
 });
