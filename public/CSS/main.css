@@ -9,12 +9,16 @@ a {
 a {
     color: #3593b1;
 }
+.st-sort:before{
+  content:'\25b6';
+}
 .st-sort-ascent:before {
     content: '\25B2';
 }
 .st-sort-descent:before {
     content: '\25BC';
 }
+
 th {
 	cursor:default;
 }

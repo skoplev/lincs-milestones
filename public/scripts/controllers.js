@@ -41,6 +41,10 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
 			release: function(value){
 				if(value["release-date"]=="TBD") return new Date("6/29/2100")
 				else return new Date(value["release-date"]);
+			},
+			status:function(value){
+				if(value['release-link']) return 1;
+				else return 2;
 			}
 		}
 
