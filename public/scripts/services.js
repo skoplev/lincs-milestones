@@ -5,11 +5,11 @@ services.factory('centerMap',function(){
 	return {
 		urls:{
 			"Broad-LINCS-Transcriptomics":"http://www.lincscloud.org/",
-			"Broad-LINCS-PCCSE":"http://www.broadinstitute.org/~jjaffe/",
+			"Broad-LINCS-PCCSE":"http://www.lincsproject.org/centers/data-and-signature-generating-centers/broad-prx/",
 			"HMS-LINCS":"http://lincs.hms.harvard.edu/",
 			"DTOXS":"http://research.mssm.edu/pst/DToxS/index.htm",
-			"MEP-LINCS":"http://www.ohsu.edu/xd/education/schools/school-of-medicine/departments/basic-science-departments/biomedical-engineering/spatial-systems-biomedicine/",
-			"NeuroLINCS":"http://www.faculty.uci.edu/profile.cfm?faculty_id=4708"
+			"MEP-LINCS":"http://www.lincsproject.org/centers/data-and-signature-generating-centers/oregon-u/",
+			"NeuroLINCS":"http://www.lincsproject.org/centers/data-and-signature-generating-centers/neurolincs/"
 		},
 		logos:{
 			"Broad-LINCS-Transcriptomics":"CSS/img/Broad.jpg",
