@@ -47,12 +47,18 @@ th {
     text-transform: uppercase;
 }
 .center-name {
-    width: 130px;
+    width: 100px;
+}
+
+.center-name > a {
+  width: 50px;
+  float: left;
+  text-align: center;
 }
 
 .logo{
-	width:25px;
-	margin-right:5px;
+  width: 50px;
+  margin-right: 5px;
 }
 
 .milestones-title{
@@ -91,5 +97,3 @@ th {
   border-radius: 4px;
   cursor:pointer;
 }
-
-

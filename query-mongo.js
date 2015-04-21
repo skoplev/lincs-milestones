@@ -4,7 +4,7 @@
 var coll;
 var connectDeferred = q.defer();
 // point to falafel server
-MongoClient.connect('mongodb://readWriteUser:askQiaonan@loretta/LINCS',
+MongoClient.connect('mongodb://readWriteUser:askQiaonan@10.91.53.62/LINCS',
 	function(err,db){
 		if(err) {
             connectDeferred.reject(err);
@@ -12,8 +12,8 @@ MongoClient.connect('mongodb://readWriteUser:askQiaonan@loretta/LINCS',
             connectDeferred.resolve(db.collection("milestones"));
         }
 		coll = db.collection("milestones");
-		
-		
+
+
 		exports.getAll=function(){
 			var deferred = q.defer();
 			coll.find().sort({center:1,"assay_info":1})
@@ -26,7 +26,5 @@ MongoClient.connect('mongodb://readWriteUser:askQiaonan@loretta/LINCS',
 			});
 			return deferred.promise;
 		};
-		
+
 });
-
-
