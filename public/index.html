@@ -73,9 +73,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="doc in displayedDocs">
-                        <td class="center-name displayed-data"><a href="{{centerMap[doc['center']]['url']}}" target="_blank">
-                            {{centerMap[doc['center']]['initial']}}
-                        </a></td>
+                        <td class="center-name displayed-data"><a ng-href="{{centerMap[doc['center']]['url']}}" target="_blank"><img ng-src="{{centerMap[doc['center']]['logo']}}" title="{{centerMap[doc['center']]['fullName']}}"></a></td>
                         <td class="displayed-data"><p class="cell-data">{{doc['assay']}}</p></td>
                         <td>
                             <a ng-click="showPerturbagens(doc['perturbagens'])" class="clickable">
@@ -90,14 +88,14 @@
                             <div class="displayed-data" ng-repeat="count in doc['cell-lines-count']">
 
                                 <p class="cell-data" ng-if="!(count.type === 'TBD' && count.count === 'TBD')">{{count.type+" : "+count.count}}</p>
-				<p class="cell-data" ng-if="(count.type === 'TBD' && count.count === 'TBD')">TBD</p>
+				            <p class="cell-data" ng-if="(count.type === 'TBD' && count.count === 'TBD')">TBD</p>
                             </div>
-                            </div>
+                            </a>
                         </td>
                         <td>
                             <div class="displayed-data" ng-repeat="readout in doc['readouts']">
                                 {{readout}}
-                            </a>
+                                </div>
                         </td>
                         <td class="displayed-data"><p class="cell-data">{{doc['release-date']}}</p></td>
                         <td style="min-width: 80px;">

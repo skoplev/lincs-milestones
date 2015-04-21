@@ -47,7 +47,7 @@ th {
     text-transform: uppercase;
 }
 .center-name {
-    width: 100px;
+    width: 50px;
 }
 
 .center-name > a {
@@ -66,7 +66,7 @@ th {
 }
 
 .displayed-data {
-	min-width: 150px;
+	min-width: 100px;
 	font-size: 12px;
 }
 
