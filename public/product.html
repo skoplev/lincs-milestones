@@ -68,7 +68,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="doc in displayedDocs">
-                        <td class="center-name displayed-data"><a href="{{centerMap.urls[doc['center']]}}" target="_blank"><img class="logo" ng-src="{{centerMap.logos[doc['center']]}}" />{{doc["center"]}}</a></td>
+                        <td class="center-name displayed-data"><a href="{{centerMap[doc['center']]['url']}}" target="_blank"><img class="logo" ng-src="{{centerMap[doc['center']]['logo']}}" />{{doc["center"]}}</a></td>
                         <td class="displayed-data"><p class="cell-data assay-cell">{{doc['assay']}}</p></td>
                         <td>
                             <a ng-click="showPerturbagens(doc['perturbagens'])" class="clickable">

@@ -6,26 +6,32 @@ services.factory('centerMap',function(){
 		"LINCS Transcriptomics":{
 			url:"http://www.lincscloud.org/",
 			initial:'T',
+			color:"#0B609A"
 		},
 		"LINCS PCCSE":{
 			url:"http://www.lincsproject.org/centers/data-and-signature-generating-centers/broad-prx/",
 			initial:'P',
+			color:"#0B609A"
 		},
 		"HMS LINCS":{
 			url:"http://lincs.hms.harvard.edu/",
 			initial:'H',
+			color:"#C90016"
 		},
 		"DTOXS":{
 			url:"http://research.mssm.edu/pst/DToxS/index.htm",
-			initial:'D'
+			initial:'D',
+			color:"#D80B8C"
 		},
 		"MEP LINCS":{
 			url:"http://www.lincsproject.org/centers/data-and-signature-generating-centers/oregon-u/",
-			initial:'M'
+			initial:'M',
+			color:"#66cc33"
 		},
 		"NeuroLINCS":{
 			url:"http://www.lincsproject.org/centers/data-and-signature-generating-centers/neurolincs/",
-			initial:'N'
+			initial:'N',
+			color:"#ffd200"
 		}
 		// logos:{
 		// 	"LINCS Transcriptomics":"CSS/img/Broad.jpg",
