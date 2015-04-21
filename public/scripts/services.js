@@ -3,22 +3,38 @@ var services = angular.module('services', []);
 
 services.factory('centerMap',function(){
 	return {
-		urls:{
-			"LINCS Transcriptomics":"http://www.lincscloud.org/",
-			"LINCS PCCSE":"http://www.lincsproject.org/centers/data-and-signature-generating-centers/broad-prx/",
-			"HMS LINCS":"http://lincs.hms.harvard.edu/",
-			"DTOXS":"http://research.mssm.edu/pst/DToxS/index.htm",
-			"MEP LINCS":"http://www.lincsproject.org/centers/data-and-signature-generating-centers/oregon-u/",
-			"NeuroLINCS":"http://www.lincsproject.org/centers/data-and-signature-generating-centers/neurolincs/"
+		"LINCS Transcriptomics":{
+			url:"http://www.lincscloud.org/",
+			initial:'T',
 		},
-		logos:{
-			"LINCS Transcriptomics":"CSS/img/Broad.jpg",
-			"LINCS PCCSE":"CSS/img/JAFFE-LINCS-CenterIcon.png",
-			"HMS LINCS":"CSS/img/hms_lincs.png",
-			"DTOXS":"CSS/img/DTOXS_Logo.PNG",
-			"MEP LINCS":"CSS/img/ohsu.jpg",
-			"NeuroLINCS":"CSS/img/NeuroLINCS.png"
+		"LINCS PCCSE":{
+			url:"http://www.lincsproject.org/centers/data-and-signature-generating-centers/broad-prx/",
+			initial:'P',
+		},
+		"HMS LINCS":{
+			url:"http://lincs.hms.harvard.edu/",
+			initial:'H',
+		},
+		"DTOXS":{
+			url:"http://research.mssm.edu/pst/DToxS/index.htm",
+			initial:'D'
+		},
+		"MEP LINCS":{
+			url:"http://www.lincsproject.org/centers/data-and-signature-generating-centers/oregon-u/",
+			initial:'M'
+		},
+		"NeuroLINCS":{
+			url:"http://www.lincsproject.org/centers/data-and-signature-generating-centers/neurolincs/",
+			initial:'N'
 		}
+		// logos:{
+		// 	"LINCS Transcriptomics":"CSS/img/Broad.jpg",
+		// 	"LINCS PCCSE":"CSS/img/JAFFE-LINCS-CenterIcon.png",
+		// 	"HMS LINCS":"CSS/img/hms_lincs.png",
+		// 	"DTOXS":"CSS/img/DTOXS_Logo.PNG",
+		// 	"MEP LINCS":"CSS/img/ohsu.jpg",
+		// 	"NeuroLINCS":"CSS/img/NeuroLINCS.png"
+		// }
 	}
 });
 
