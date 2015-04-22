@@ -6,7 +6,9 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
 
 		getSource.then(function(source){
 			$scope.centerMap = centerMap;
-			$scope.docs = source.transformed;
+			$scope.docs = _.sortBy(source.transformed, function(doc){
+				return centerMap[doc['center']].initial;
+			});
 			$scope.summary = {
 			    center: 0,
 		        assays: 0,
