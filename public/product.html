@@ -52,7 +52,7 @@
             <table st-table="displayedDocs" st-safe-src="docs" class="table table-striped col-md-12">
                 <thead>
                     <tr>
-                        <th st-sort="getters.center"  class="st-sort">Center</th>
+                        <th st-sort="center"  class="st-sort">Center</th>
                         <th>Assay/Dataset</th>
                         <th>Perturbagens</th>
                         <th>Cells</th>
@@ -67,10 +67,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="doc in displayedDocs">
-                        <td class="center-name displayed-data"><a ng-href="{{centerMap[doc['center']]['url']}}" target="_blank"><img class="logo" ng-src="{{centerMap[doc['center']]['logo']}}" />{{doc["center"]}}</a></td>
-                        <td class="displayed-data"><p class="cell-data assay-cell">{{doc['assay']}}</p></td>
-                        <td>
+                <tr ng-repeat="doc in displayedDocs">
+                    <td class="center-name displayed-data"><a ng-href="{{centerMap[doc['center']]['url']}}" target="_blank"><img class="logo" ng-src="{{centerMap[doc['center']]['logo']}}" title="{{centerMap[doc['center']]['fullName']}}"></a></td>
+                    <td class="displayed-data"><p class="cell-data">{{doc['assay']}}</p></td>
+                    <td>
                             <a ng-click="showPerturbagens(doc['perturbagens'])" class="clickable">
                             <div class="displayed-data" ng-repeat="count in doc['perturbagens-count']">
                                 <p class="cell-data" ng-if="!(count.type === 'TBD' && count.count === 'TBD')">{{count.type+" : "+count.count}}</p>
