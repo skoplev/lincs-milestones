@@ -13,7 +13,7 @@
     "underscore":"1.7.0",
     "font-awesome":"4.2.0",
     "string":"2.2.0",
-    "angular-smart-table":"1.4.5",
+    "angular-smart-table":"2.0.2",
     "angular-bootstrap-toggle-switch":"0.5.x"
   }
 }

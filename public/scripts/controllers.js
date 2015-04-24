@@ -6,9 +6,20 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
 
 		getSource.then(function(source){
 			$scope.centerMap = centerMap;
-			$scope.docs = _.sortBy(source.transformed, function(doc){
-				return centerMap[doc['center']].initial;
-			});
+			$scope.docs = source.transformed;
+			$scope.docs.forEach(function(doc){
+				var date,status,center;
+				if(doc["release-date"]=="TBD") date = new Date("6/29/2100").getTime();
+				else date = new Date(doc["release-date"]).getTime();
+				center = centerMap[doc['center']].initial;
+				if(doc['release-link']) status =  1;
+				else status = 2;
+				// fix the bug when using function to sort.
+				doc['centerSort'] = center+date;
+				doc['releaseSort'] = date+center;
+				doc['statusSort'] = status+date+center;
+			}); 
+			
 			$scope.summary = {
 			    center: 0,
 		        assays: 0,
@@ -39,19 +50,26 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
 
 		
 
-		$scope.getters = {
-			center:function(val){
-				return centerMap[val['center']]['initial']+new Date(val["release-date"]).getTime();
-			},
-			release: function(value){
-				if(value["release-date"]=="TBD") return new Date("6/29/2100");
-				else return new Date(value["release-date"]);
-			},
-			status:function(value){
-				if(value['release-link']) return 1;
-				else return 2;
-			}
-		}
+		// $scope.getters = {
+		// 	center:function(val){
+		// 		return centerMap[val['center']]['initial']+new Date(val["release-date"]).getTime();
+		// 	},
+		// 	release: function(value){
+		// 		if(value["release-date"]=="TBD") return new Date("6/29/2100");
+		// 		else return new Date(value["release-date"]);
+		// 	},
+		// 	status:function(value){
+		// 		if(value['release-link']) return 1;
+		// 		else return 2;
+		// 	},
+		// 	assay:function(value){
+		// 		return value['assay'];
+		// 	},
+		// };
+
+		// $scope.centerGet = function(val){
+		// 	return val['center'];
+		// }
 
 		$scope.extractID = function(link){
 			return link.split('/').splice(-2,1)[0];
