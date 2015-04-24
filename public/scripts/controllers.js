@@ -41,10 +41,10 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
 
 		$scope.getters = {
 			center:function(val){
-				return centerMap[val['center']]['initial'];
+				return centerMap[val['center']]['initial']+new Date(val["release-date"]).getTime();
 			},
 			release: function(value){
-				if(value["release-date"]=="TBD") return new Date("6/29/2100")
+				if(value["release-date"]=="TBD") return new Date("6/29/2100");
 				else return new Date(value["release-date"]);
 			},
 			status:function(value){
