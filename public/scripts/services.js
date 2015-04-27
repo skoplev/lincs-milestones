@@ -29,7 +29,8 @@ services.factory('centerMap',function(){
 			url:"http://research.mssm.edu/pst/DToxS/index.htm",
 			logo:"CSS/img/DTOXS_D.png",
 			initial:'D',
-			color:"#D80B8C"
+			// color:"#D80B8C"
+			color:"#00AEEF"
 		},
 		"MEP LINCS":{
 			fullName:"MEP LINCS",
