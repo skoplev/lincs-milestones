@@ -19,9 +19,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/',express.static(path.join(__dirname, 'public')));
+app.use('/milestones',express.static(path.join(__dirname, 'public')));
 
-app.get('/docs', handlers.docs);
+app.get('/milestones/docs', handlers.docs);
 
 
 // catch 404 and forward to error handler
@@ -55,6 +55,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.listen(8081)
-console.log('listen on 8081')
+app.listen(8081);
+console.log('listen on 8081');
 module.exports = app;
