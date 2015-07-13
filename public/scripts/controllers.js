@@ -6,8 +6,11 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
 
 		getSource.then(function(source){
 			$scope.centerMap = centerMap;
-			$scope.docs = source.transformed;
-			$scope.docs.forEach(function(doc){
+			$scope.docs = [];
+			source.transformed.forEach(function(doc) {
+				if (!angular.isDefined(doc['release-link'])) {
+					return;
+				}
 				var date,status,center;
 				if(doc["release-date"]=="TBD") date = new Date("6/29/2100").getTime();
 				else date = new Date(doc["release-date"]).getTime();
@@ -18,7 +21,8 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
 				doc['centerSort'] = center+date;
 				doc['releaseSort'] = date+center;
 				doc['statusSort'] = status+date+center;
-			}); 
+				$scope.docs.push(doc);
+			});
 			
 			$scope.summary = {
 			    center: 0,
@@ -73,7 +77,7 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
 
 		$scope.extractID = function(link){
 			return link.split('/').splice(-2,1)[0];
-		}
+		};
 
 		var getCommonKeys = function(items){
 			// get common keys of item objects.
@@ -102,7 +106,7 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
 			cells.forEach(function(cell){
 				delete cell["$$hashKey"];
 			});
-			var modalInstance = $modal.open({
+			$modal.open({
       			templateUrl: baseURL+'cells.html',
       			controller: 'cellsModalCtrl',
       			resolve:{
@@ -111,10 +115,10 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
       				},
       				commonKeys:function(){
       					return getCommonKeys(cells);
-      				},
+      				}
       			}
     		});
-		}
+		};
 
 		$scope.showPerturbagens = function(perturbagens){
 			if(perturbagens[0]=="TBD"){
@@ -124,7 +128,7 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
 			perturbagens.forEach(function(perturbagen){
 				delete perturbagen["$$hashKey"];
 			});
-			var modalInstance = $modal.open({
+			$modal.open({
       			templateUrl: baseURL+'perturbagens.html',
       			controller: 'perturbagensModalCtrl',
       			resolve:{
@@ -133,10 +137,10 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
       				},
       				commonKeys:function(){
       					return getCommonKeys(perturbagens);
-      				},
+      				}
       			}
     		});
-		}
+		};
 
 
 }])

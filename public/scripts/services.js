@@ -1,6 +1,18 @@
 
 var services = angular.module('services', []);
 
+services.filter('released', function() {
+	return function(docs) {
+		var results = [];
+		angular.forEach(docs, function(doc) {
+			if (angular.isDefined(doc["release-link"])) {
+				results.push(doc);
+			}
+		});
+		return results;
+	};
+});
+
 services.factory('centerMap',function(){
 	return {
 		"LINCS Transcriptomics":{
@@ -71,7 +83,7 @@ services.factory('getSource',['$http', 'dateFilter','$q',
 				transformed:transform(data),
 				summary: summary(data)
 			})
-		})
+		});
 
 
 		function transform(docs){
@@ -102,7 +114,7 @@ services.factory('getSource',['$http', 'dateFilter','$q',
 			count.center = 6;
 
 			raw.forEach(function(e){
-				var assayName = e["assay"]
+				var assayName = e["assay"];
 				assays[assayName] = {};
 				assays[assayName].perturbagensCount = transformByKey("perturbagens-count",e);
 				assays[assayName].cellLinesCount = transformByKey("cell-lines-count",e);
@@ -114,10 +126,10 @@ services.factory('getSource',['$http', 'dateFilter','$q',
 					var total = 0;
 					assay[key].forEach(function(count){
 						if(count.count!="TBD") total = total+count.count;
-					})
+					});
 					return memo+total;
 				},0);
-			}
+			};
 			count.cellLines = sum(assays,"cellLinesCount");
 			count.perturbagens = sum(assays,"perturbagensCount");
 			return count;
@@ -192,7 +204,7 @@ function transformByKey(key,doc){
 				})).toLocaleDateString();
 			}else return "TBD";
 		}
-	}
+	};
 
 	return transforms[key]();
 }
