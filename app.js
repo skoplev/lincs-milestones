@@ -19,9 +19,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/milestones',express.static(path.join(__dirname, 'public')));
+app.use('/betaMilestones',express.static(path.join(__dirname, 'public')));
 
-app.get('/milestones/docs', handlers.docs);
+app.get('/betaMilestones/docs', handlers.docs);
 
 
 // catch 404 and forward to error handler
