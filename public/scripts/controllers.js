@@ -8,10 +8,9 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
             $scope.centerMap = centerMap;
             $scope.docs = [];
             source.transformed.forEach(function(doc) {
-                console.log(doc);
-                if (!doc.released) {
-                    return;
-                }
+                //if (!doc.released) {
+                //    return;
+                //}
                 var date, status, center;
                 if (doc["release-date"] == "TBD") {
                     date = new Date("6/29/2100").getTime();
@@ -19,7 +18,7 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
                     date = new Date(doc["release-date"]).getTime();
                 }
                 center = centerMap[doc['center']].initial;
-                if (doc['release-link']) {
+                if (doc.released) {
                     status = 1;
                 } else {
                     status = 2;
@@ -27,7 +26,7 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
                 // fix the bug when using function to sort.
                 doc['centerSort'] = center + date;
                 doc['releaseSort'] = date + center;
-                doc['statusSort'] = status + date + center;
+                doc['statusSort'] = status + center;
                 $scope.docs.push(doc);
             });
 
