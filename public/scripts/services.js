@@ -128,7 +128,6 @@ services.factory('getSource', ['$http', 'dateFilter', '$q',
             $http
                 .get('http://amp.pharm.mssm.edu/LDR/api/counts/')
                 .success(function(data) {
-                    console.log(data);
                     count.assays = data.dataReleases;
                     count.cellLines = data.cellLines;
                     count.perturbagens = data.perturbagens;
