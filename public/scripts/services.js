@@ -1,212 +1,188 @@
-
 var services = angular.module('services', []);
 
 services.filter('released', function() {
-	return function(docs) {
-		var results = [];
-		angular.forEach(docs, function(doc) {
-			if (angular.isDefined(doc["release-link"])) {
-				results.push(doc);
-			}
-		});
-		return results;
-	};
+    return function(docs) {
+        var results = [];
+        angular.forEach(docs, function(doc) {
+            if (angular.isDefined(doc["release-link"])) {
+                results.push(doc);
+            }
+        });
+        return results;
+    };
 });
 
-services.factory('centerMap',function(){
-	return {
-		"LINCS Transcriptomics":{
-			fullName:"LINCS Center for Transcriptomics",
-			url:"http://www.lincscloud.org/",
-			logo:"CSS/img/Broad_T.png",
-			initial:'T',
-			color:"#0B609A"
-		},
-		"LINCS PCCSE":{
-			fullName:"LINCS Proteomic Characterization Center for Signaling and Epigenetics",
-			url:"http://www.lincsproject.org/centers/data-and-signature-generating-centers/broad-prx/",
-			logo:"CSS/img/Broad_P.png",
-			initial:'P',
-			color:"#0B609A"
-		},
-		"HMS LINCS":{
-			fullName:"HMS LINCS",
-			url:"http://lincs.hms.harvard.edu/",
-			logo:"CSS/img/HMS_H.png",
-			initial:'H',
-			color:"#C90016"
-		},
-		"DTOXS":{
-			fullName:"DToxS",
-			url:"http://research.mssm.edu/pst/DToxS/index.htm",
-			logo:"CSS/img/DTOXS_D.png",
-			initial:'D',
-			// color:"#D80B8C"
-			color:"#00AEEF"
-		},
-		"MEP LINCS":{
-			fullName:"MEP LINCS",
-			url:"http://www.lincsproject.org/centers/data-and-signature-generating-centers/oregon-u/",
-			logo:"CSS/img/MEP_M.png",
-			initial:'M',
-			color:"#66cc33"
-		},
-		"NeuroLINCS":{
-			fullName:"NeuroLINCS",
-			url:"http://www.lincsproject.org/centers/data-and-signature-generating-centers/neurolincs/",
-			logo:"CSS/img/NeuroLINCS_N.png",
-			initial:'N',
-			color:"#ffd200"
-		}
-		// logos:{
-		// 	"LINCS Transcriptomics":"CSS/img/Broad.jpg",
-		// 	"LINCS PCCSE":"CSS/img/JAFFE-LINCS-CenterIcon.png",
-		// 	"HMS LINCS":"CSS/img/hms_lincs.png",
-		// 	"DTOXS":"CSS/img/DTOXS_Logo.PNG",
-		// 	"MEP LINCS":"CSS/img/ohsu.jpg",
-		// 	"NeuroLINCS":"CSS/img/NeuroLINCS.png"
-		// }
-	}
+services.factory('centerMap', function() {
+    return {
+        "Broad-LINCS-Transcriptomics": {
+            fullName: "LINCS Center for Transcriptomics",
+            url: "http://www.lincscloud.org/",
+            logo: "CSS/img/Broad_T.png",
+            initial: 'T',
+            color: "#0B609A"
+        },
+        "Broad-LINCS-PCCSE": {
+            fullName: "LINCS Proteomic Characterization Center for Signaling and Epigenetics",
+            url: "http://www.lincsproject.org/centers/data-and-signature-generating-centers/broad-prx/",
+            logo: "CSS/img/Broad_P.png",
+            initial: 'P',
+            color: "#0B609A"
+        },
+        "HMS-LINCS": {
+            fullName: "HMS LINCS",
+            url: "http://lincs.hms.harvard.edu/",
+            logo: "CSS/img/HMS_H.png",
+            initial: 'H',
+            color: "#C90016"
+        },
+        "DTOXS": {
+            fullName: "DToxS",
+            url: "http://research.mssm.edu/pst/DToxS/index.htm",
+            logo: "CSS/img/DTOXS_D.png",
+            initial: 'D',
+            // color:"#D80B8C"
+            color: "#00AEEF"
+        },
+        "MEP-LINCS": {
+            fullName: "MEP LINCS",
+            url: "http://www.lincsproject.org/centers/data-and-signature-generating-centers/oregon-u/",
+            logo: "CSS/img/MEP_M.png",
+            initial: 'M',
+            color: "#66cc33"
+        },
+        "NeuroLINCS": {
+            fullName: "NeuroLINCS",
+            url: "http://www.lincsproject.org/centers/data-and-signature-generating-centers/neurolincs/",
+            logo: "CSS/img/NeuroLINCS_N.png",
+            initial: 'N',
+            color: "#ffd200"
+        }
+        // logos:{
+        // 	"LINCS Transcriptomics":"CSS/img/Broad.jpg",
+        // 	"LINCS PCCSE":"CSS/img/JAFFE-LINCS-CenterIcon.png",
+        // 	"HMS LINCS":"CSS/img/hms_lincs.png",
+        // 	"DTOXS":"CSS/img/DTOXS_Logo.PNG",
+        // 	"MEP LINCS":"CSS/img/ohsu.jpg",
+        // 	"NeuroLINCS":"CSS/img/NeuroLINCS.png"
+        // }
+    }
 });
 
 var transforms;
-services.factory('getSource',['$http', 'dateFilter','$q',
-	function($http,dateFilter,$q){
+services.factory('getSource', ['$http', 'dateFilter', '$q',
+    function($http, dateFilter, $q) {
 
-		var deferred = $q.defer();
+        var deferred = $q.defer();
 
-		var idx = window.location.href.lastIndexOf('/');
-		var baseUrl = window.location.href.slice(0,idx+1);
-		$http.get(baseUrl+'docs')
-				.success(function(data){
-			deferred.resolve({
-				transformed:transform(data),
-				summary: summary(data)
-			})
-		});
+        var idx = window.location.href.lastIndexOf('/');
 
-
-		function transform(docs){
-			return _.map(docs,function(doc){
-				var transformed = {};
-				transformed["center"] = doc["center"];
-				transformed["assay"] = doc["assay"];
-
-				transformed["cell-lines"] = transformByKey("cell-lines",doc);
-				transformed["cell-lines-count"] = transformByKey("cell-lines-count",doc);
-
-				transformed["perturbagens"] = transformByKey("perturbagens",doc);
-				transformed["perturbagens-count"] = transformByKey("perturbagens-count",doc);
-
-				transformed["readouts"] = transformByKey("readouts",doc);
-				transformed["release-date"] = transformByKey("release-date",doc);
-				transformed["release-link"] = doc["release-link"];
-
-				transformed['id'] = doc['_id'];
-
-				return transformed
-			});
-		}
-
-		function summary(raw){
-			var count = {};
-			var assays = {};
-			count.center = 6;
-
-			raw.forEach(function(e){
-				var assayName = e["assay"];
-				assays[assayName] = {};
-				assays[assayName].perturbagensCount = transformByKey("perturbagens-count",e);
-				assays[assayName].cellLinesCount = transformByKey("cell-lines-count",e);
-			});
-
-			count.assays = Object.keys(assays).length;
-			var sum = function(assays,key){
-				return _.reduce(assays,function(memo,assay){
-					var total = 0;
-					assay[key].forEach(function(count){
-						if(count.count!="TBD") total = total+count.count;
-					});
-					return memo+total;
-				},0);
-			};
-			count.cellLines = sum(assays,"cellLinesCount");
-			count.perturbagens = sum(assays,"perturbagensCount");
-			return count;
-		}
-
-		return deferred.promise;
-}]);
+        $http
+            .get('http://amp.pharm.mssm.edu/LDR/api/releases/')
+            .success(function(data) {
+                deferred.resolve({
+                    transformed: transform(data),
+                    summary: summary(data)
+                })
+            });
 
 
+        function transform(docs) {
+            return _.map(docs, function(doc) {
+
+                var transformed = {};
+                transformed.center = doc.group.name;
+                transformed.assay = doc.datasetName;
+                transformed.released = doc.released;
+
+                transformed["cell-lines"] = transformByKey("cellLines", doc);
+                transformed["cell-lines-count"] = transformed["cell-lines"].length;
+
+                transformed.perturbagens = transformByKey("perturbagens", doc);
+                transformed["perturbagens-count"] = transformed.perturbagens.length;
+
+                transformed.readouts = transformByKey("readouts", doc);
+                transformed["release-date"] = transformByKey("releaseDate", doc);
+                transformed["release-link"] = doc.urls.dataUrl;
+
+                transformed['id'] = doc['_id'];
+
+                return transformed
+            });
+        }
+
+        function summary(raw) {
+
+            var def = $q.defer();
+
+            var count = {};
+            var assays = {};
+            count.center = 6;
+
+            raw.forEach(function(e) {
+                var assayName = e.datasetName;
+                assays[assayName] = {};
+                assays[assayName].perturbagensCount = e.metadata.perturbagens.length;
+                assays[assayName].cellLinesCount = e.metadata.cellLines.length;
+            });
+
+            $http
+                .get('http://amp.pharm.mssm.edu/LDR/api/counts/')
+                .success(function(data) {
+                    console.log(data);
+                    count.assays = data.DataReleases;
+                    count.cellLines = data.CellLines;
+                    count.perturbagens = data.Perturbagens;
+                    def.resolve(count);
+                });
+
+            return def.promise;
+        }
+
+        return deferred.promise;
+    }]);
 
 
-function transformByKey(key,doc){
-	// key is the key in transformed.
-	var transforms = {
-		"cell-lines":function(){
-			if("cell-lines" in doc){
-				return _.sortBy(doc["cell-lines"],function(cell){
-					if("name" in cell)
-						return cell.name.toLowerCase();
-					else
-						return 'zzz';
-				});
-			}else return ["TBD"]
-		},
+function transformByKey(key, doc) {
+    // key is the key in transformed.
+    var transforms = {
+        cellLines: function() {
+            return _.sortBy(doc.metadata.cellLines, function(cell) {
+                if ("name" in cell) {
+                    return cell.name.toLowerCase();
+                } else {
+                    return 'zzz';
+                }
+            });
+        },
 
-		"cell-lines-count":function(){
-			// consider changing the structure of cell-lines-meta
-			// to the same as perturbagens-meta.
-			if("cell-lines-meta" in doc){
-				return _.map(doc["cell-lines-meta"],function(countObj){
-					if(countObj.type=="ips-differentiated") countObj.type="iPSC, differentiated";
-					return countObj;
-				});
-			}else return [{count:"TBD",type:"TBD"}]
-		},
+        perturbagens: function() {
+            return _.sortBy(doc.metadata.perturbagens, function(perturbagen) {
+                if ("name" in perturbagen) {
+                    return S(perturbagen.name).trim().s.toLowerCase();
+                } else {
+                    return 'zzz';
+                }
+            });
+        },
 
+        readouts: function() {
+            // all tasks have readouts
+            return _.map(doc.metadata.readouts, function(readout) {
+                return readout.name;
+            });
+        },
 
-		"perturbagens":function(){
-			if("perturbagens" in doc){
-				return _.sortBy(doc['perturbagens'],function(perturbagen){
-					if("name" in perturbagen)
-						return S(perturbagen.name).trim().s.toLowerCase();
-					else
-						return 'zzz';
-				});
-			}else return ["TBD"]
-		},
+        releaseDate: function() {
+            // most recent release date
+            if ("releaseDates" in doc) {
+                return doc.releaseDates.upcoming;
+            } else {
+                return "TBD";
+            }
+        }
+    };
 
-		"perturbagens-count":function(){
-			if("perturbagens-meta" in doc && "count-type" in doc["perturbagens-meta"]){
-				var countType = doc["perturbagens-meta"]["count-type"]
-				return _.map(countType,function(countObj){
-					if(!("count" in countObj)) countObj["count"] = "TBD";
-					if(!("type" in countObj)) countObj["type"] = "TBD";
-					return countObj;
-				});
-			}else return [{count:"TBD",type:"TBD"}]
-		},
-
-		"readouts":function(){
-			// all tasks have readouts
-			return _.map(doc["readouts"],function(readout){
-				return readout.name;
-			});
-		},
-
-		"release-date":function(){
-			// most recent release date
-			if("release-dates" in doc){
-				return _.min(_.map(doc["release-dates"],function(release){
-					return new Date(release.date);
-				})).toLocaleDateString();
-			}else return "TBD";
-		}
-	};
-
-	return transforms[key]();
+    return transforms[key]();
 }
 
 

@@ -3,30 +3,39 @@
 	<h4 class="modal-title example-header">Cells in this Assay/Dataset:</h4>
 </div>
 <div class="modal-body custom-modal-body">
-  <table st-table="cells" class="table">
-      <thead>
-          <tr>
-              <th ng-repeat="key in keys" ng-if="key!=$$hashKey">{{key}}</th>
-          </tr>
-            <tr ng-if="cellCount>24">
-                 <th colspan="2">
-                 <input  placeholder="Search" st-search type="search" class="form-control" />
-                  </th>
-            </tr>
-       </thead>
-       <tbody>
-          <tr st-select-row="entry" st-selected-entry="selectedEntry" ng-repeat="entry in cells">
-              <td ng-repeat="key in keys">{{entry[key]?entry[key]:"TBD"}}</td>
-            </tr>
-       </tbody>
+    <table st-table="cells" class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Tissue</th>
+            <th>Class</th>
+        </tr>
+        <tr ng-if="cellCount>24">
+            <th colspan="2">
+                <input placeholder="Search" st-search type="search"
+                       class="form-control"/>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr st-select-row="entry" st-selected-entry="selectedEntry"
+            ng-repeat="entry in cells">
+            <td class="col-xs-5">{{entry.name}}</td>
+            <td>{{entry.type ? entry.type : 'NA'}}</td>
+            <td>{{entry.tissue ? entry.tissue : 'NA'}}</td>
+            <td>{{entry.class ? entry.class : 'NA'}}</td>
+        </tr>
+        </tbody>
         <tfoot ng-if="cellCount>12">
-            <tr>
-              <td colspan="2">               
-                <div st-pagination="" st-items-by-page="12" st-displayed-pages="" class="custom-pagination"></div>
-              </td>
-            </tr>
+        <tr>
+            <td colspan="2">
+                <div st-pagination="" st-items-by-page="12"
+                     st-displayed-pages="" class="custom-pagination"></div>
+            </td>
+        </tr>
         </tfoot>
-       </table>
+    </table>
 </div>
 <div class="modal-footer">
 	<!-- <button class="btn btn-primary" ng-click="ok()">Search</button> -->

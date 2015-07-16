@@ -77,17 +77,16 @@
                         <td class="displayed-data"><p class="cell-data">{{doc['assay']}}</p></td>
                         <td>
                             <a ng-click="showPerturbagens(doc['perturbagens'])" class="clickable">
-                            <div class="displayed-data" ng-repeat="count in doc['perturbagens-count']">
-                                <p class="cell-data" ng-if="!(count.type === 'TBD' && count.count === 'TBD')">{{count.type+" : "+count.count}}</p>
+                            <div class="displayed-data">
+                                <p class="cell-data-count" ng-if="!(count.type === 'TBD' && count.count === 'TBD')">{{doc['perturbagens-count']}}</p>
 				<p class="cell-data" ng-if="(count.type === 'TBD' && count.count === 'TBD')">TBD</p>
                             </div>
                             </a>
                         </td>
                         <td>
                             <a ng-click="showCells(doc['cell-lines'])" class="clickable">
-                            <div class="displayed-data" ng-repeat="count in doc['cell-lines-count']">
-
-                                <p class="cell-data" ng-if="!(count.type === 'TBD' && count.count === 'TBD')">{{count.type+" : "+count.count}}</p>
+                            <div class="displayed-data">
+                                <p class="cell-data-count" ng-if="!(count.type === 'TBD' && count.count === 'TBD')">{{doc['cell-lines-count']}}</p>
 				            <p class="cell-data" ng-if="(count.type === 'TBD' && count.count === 'TBD')">TBD</p>
                             </div>
                             </a>
@@ -97,7 +96,7 @@
                                 {{readout}}
                                 </div>
                         </td>
-                        <td class="displayed-data"><p class="cell-data">{{doc['release-date']}}</p></td>
+                        <td class="displayed-data"><p class="cell-data">{{doc['release-date'] | date: 'MM/dd/yyyy'}}</p></td>
                         <td style="min-width: 80px;">
 				<span ng-if="!(doc['release-link'])" class="label label-warning"> In Production </span>
                 <div ng-if="doc['release-link']">
