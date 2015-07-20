@@ -142,12 +142,8 @@
                     <div ng-if="doc.released">
                         <a style="width: 80px;"
                            class="label label-success"
-                           href="{{doc['release-link']}}" target="_blank">
+                           ng-href="{{doc['release-link']}}" target="_blank">
                             Available </a>
-
-                        <div style="font-size:0.9em"> (ID:
-                            {{extractID(doc['release-link'])}})
-                        </div>
                     </div>
                 </td>
             </tr>
