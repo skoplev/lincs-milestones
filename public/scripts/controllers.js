@@ -83,7 +83,13 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
         // }
 
         $scope.extractID = function(link) {
-            return link.split('/').splice(-2, 1)[0];
+            // Check for www.ncbi.nlm.nih.gov
+            var sL = link.split('/');
+            if (sL[2] === 'www.ncbi.nlm.nih.gov') {
+                return sL[sL.length - 1].split('=')[1];
+            } else {
+                return link.split('/').splice(-2, 1)[0];
+            }
         };
 
         /*
