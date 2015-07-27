@@ -111,7 +111,8 @@
                 </td>
                 <td>
                     <a ng-click="showCells(doc['cell-lines'])"
-                       class="clickable">
+                       class="clickable"
+                       ng-show="doc['cell-lines-count'] > 0">
                         <div class="displayed-data">
                             <p class="cell-data-count"
                                ng-if="!(count.type === 'TBD' && count.count === 'TBD')">
