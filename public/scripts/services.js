@@ -37,7 +37,7 @@ services.factory('centerMap', function() {
         },
         "DTOXS": {
             fullName: "DToxS",
-            url: "http://research.mssm.edu/pst/DToxS/index.htm",
+            url: "http://research.mssm.edu/pst/DToxS/index.html",
             logo: "CSS/img/DTOXS_D.png",
             initial: 'D',
             // color:"#D80B8C"
@@ -52,7 +52,7 @@ services.factory('centerMap', function() {
         },
         "NeuroLINCS": {
             fullName: "NeuroLINCS",
-            url: "http://www.lincsproject.org/centers/data-and-signature-generating-centers/neurolincs/",
+            url: "http://www.neurolincs.org",
             logo: "CSS/img/NeuroLINCS_N.png",
             initial: 'N',
             color: "#ffd200"
