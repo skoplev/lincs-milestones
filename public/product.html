@@ -86,38 +86,43 @@
                     </p>
                 </td>
                 <td>
-                    <a ng-click="showPerturbagens(doc['perturbagens'])"
-                       class="clickable">
-                        <div class="displayed-data">
-                            <p class="cell-data"
-                               ng-if="!(count.type === 'TBD' && count.count === 'TBD')">
-                                {{doc['perturbagens'][0]['type']}}s : {{doc['perturbagens-count']}}
-                            </p>
+                                    <a ng-click="showPerturbagens(doc['perturbagens'])"
+                                       class="clickable" ng-if="doc['perturbagens-count'] > 0">
+                                        <div class="displayed-data">
+                                            <p class="cell-data-count"
+                                               ng-if="!(count.type === 'TBD' && count.count === 'TBD')">
+                                                {{doc['perturbagens-count']}}
+                                            </p>
 
-                            <p class="cell-data"
-                               ng-if="(count.type === 'TBD' && count.count === 'TBD')">
-                                TBD
-                            </p>
-                        </div>
-                    </a>
-                </td>
-                <td>
-                    <a ng-click="showCells(doc['cell-lines'])"
-                       class="clickable"
-                       ng-show="doc['cell-lines-count'] > 0">
-                        <div class="displayed-data">
-                            <p class="cell-data"
-                               ng-if="!(count.type === 'TBD' && count.count === 'TBD')">
-                                {{doc['cell-lines'][0]['type']}} : {{doc['cell-lines-count']}}
-                            </p>
-
-                            <p class="cell-data"
-                               ng-if="(count.type === 'TBD' && count.count === 'TBD')">
-                                TBD
-                            </p>
-                        </div>
-                    </a>
-                </td>
+                                            <p class="cell-data"
+                                               ng-if="(count.type === 'TBD' && count.count === 'TBD')">
+                                                TBD
+                                            </p>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a ng-click="showCells(doc['cell-lines'])"
+                                       class="clickable"
+                                       ng-show="doc['cell-lines-count'] > 0">
+                                        <div class="displayed-data">
+                                            <p class="cell-data-count"
+                                               ng-if="doc['cell-lines'][0]['type'] !== 'NA' && count.count !== 'TBD' && doc['cell-lines'][0]['type'] !== 'cell line' && doc['cell-lines'][0]['type'] !== ''">
+                                                {{doc['cell-lines'][0]['type']}}: {{doc['cell-lines-count']}}
+                                            </p>
+                                            <p class="cell-data-count"
+                                               ng-if="doc['cell-lines'][0]['type'] == 'cell line'">
+                                                cell lines: {{doc['cell-lines-count']}}
+                                            </p>
+                                            <p class="cell-data-count"
+                                                ng-if="doc['cell-lines'][0]['type'] === ''">{{doc['cell-lines-count']}}</p>
+                                            <p class="cell-data-count"
+                                               ng-if="(count.type === 'TBD' && count.count === 'TBD')">
+                                                TBD
+                                            </p>
+                                        </div>
+                                    </a>
+                                </td>
                 <td>
                     <div class="displayed-data"
                          ng-repeat="readout in doc['readouts']">

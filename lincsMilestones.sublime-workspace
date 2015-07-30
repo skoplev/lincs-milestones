@@ -1,0 +1,334 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"U",
+				"University"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 107.0,
+		"last_filter": "projec",
+		"selected_items":
+		[
+			[
+				"projec",
+				"Project: Save As"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"form",
+				"Format: Javascript"
+			],
+			[
+				"for",
+				"Format: Javascript"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove ",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"edit ",
+				"Project: Edit Project"
+			],
+			[
+				"save",
+				"Project: Save As"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 530.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/mmcdermott/Work/lincs-milestones",
+		"/Users/mmcdermott/Work/lincs-milestones/public",
+		"/Users/mmcdermott/Work/lincs-milestones/public/scripts"
+	],
+	"file_history":
+	[
+		"/Users/mmcdermott/Work/lincs-milestones/public/scripts/services.js",
+		"/Users/mmcdermott/Work/ldr/app/public/releases/overview/overview.js",
+		"/Users/mmcdermott/Work/ldr/app/public/releases/create/create.js",
+		"/Users/mmcdermott/Work/ldr/app/public/group/create/create.js",
+		"/Users/mmcdermott/Work/ldr/app/public/data/data.html",
+		"/Users/mmcdermott/Work/ldr/.eslintrc",
+		"/Users/mmcdermott/Work/ldr/app/public/group/settings/settings.js",
+		"/Users/mmcdermott/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/mmcdermott/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+		"/Users/mmcdermott/Work/ldr/app/public/bar/bar.js",
+		"/Users/mmcdermott/Work/ldr/TODO.txt",
+		"/Users/mmcdermott/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/mmcdermott/Work/ldr/app/public/msgModal/msgModal.js",
+		"/Users/mmcdermott/Work/ldr/app/public/group/home/home.js",
+		"/Users/mmcdermott/Work/ldr/app/public/app.js",
+		"/Users/mmcdermott/Work/ldr/app/public/home/home.html",
+		"/Users/mmcdermott/Work/ldr/app/public/home/home.js",
+		"/Users/mmcdermott/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/mmcdermott/Work/ldr/karma.conf.js",
+		"/Users/mmcdermott/Library/Application Support/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/Users/mmcdermott/Library/Application Support/Sublime Text 3/Packages/JSLint/JSLint.sublime-settings",
+		"/Users/mmcdermott/Library/Application Support/Sublime Text 3/Packages/User/JSLint.sublime-settings",
+		"/Users/mmcdermott/Work/ldr/app/public/home/home.scss",
+		"/Users/mmcdermott/Work/ldr/bower.json",
+		"/Users/mmcdermott/Work/ldr/app/public/releases/overview/overview.scss",
+		"/Users/mmcdermott/Work/ldr/app/public/releases/create/create.scss",
+		"/Users/mmcdermott/Work/ldr/app/public/msgModal/msgModal.scss",
+		"/Users/mmcdermott/Work/ldr/app/public/nav/nav.scss",
+		"/Users/mmcdermott/Work/ldr/app/public/group/home/home.scss",
+		"/Users/mmcdermott/Work/ldr/app/public/_base.scss",
+		"/Users/mmcdermott/Work/ldr/app/public/nav/nav.js",
+		"/Users/mmcdermott/Work/ldr/app/public/main.scss",
+		"/Users/mmcdermott/Work/ldr/app/public/partials/legend.scss",
+		"/Users/mmcdermott/Work/ldr/app/public/extBootstrap.scss",
+		"/Users/mmcdermott/Work/ldr/ldr.sublime-project",
+		"/Users/mmcdermott/Work/ldr/app/public/nav/nav.html",
+		"/Users/mmcdermott/Work/ldr/app/public/style/main.scss",
+		"/Users/mmcdermott/Work/ldr/package.json",
+		"/Users/mmcdermott/Work/ldr/gulpfile.js",
+		"/Users/mmcdermott/Work/ldr/app/public/style/less/main.less"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/mmcdermott/Work/ldr/app/public",
+			"<open folders>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"centerMap",
+			"webinar",
+			"wu.masonry",
+			"small",
+			"card-release",
+			"extend",
+			"less",
+			"[.#]([^(;]*\\()",
+			"(@include\\W+)[.#]([^(;]*\\()",
+			"@include(\\W+[.#][^(;]*;)",
+			"@((?!media|include|charset|document|font-face|import|keyframes|page|supports)[a-zA-Z_]+)"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"k",
+			"@mixin \\2",
+			"\\1\\2",
+			"@extend\\1",
+			"$\\1"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "lincsMilestones.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"nav",
+				"app/public/nav/nav.html"
+			],
+			[
+				"home.js",
+				"app/public/home/home.js"
+			],
+			[
+				"bower",
+				"bower.json"
+			],
+			[
+				"hom",
+				"app/public/home/home.html"
+			],
+			[
+				"home.",
+				"app/public/home/home.js"
+			],
+			[
+				"home",
+				"app/public/home/home.html"
+			],
+			[
+				"nav.h",
+				"app/public/nav/nav.html"
+			],
+			[
+				"app.j",
+				"app/public/app.js"
+			],
+			[
+				"nav.",
+				"app/public/nav/nav.js"
+			],
+			[
+				"main.less",
+				"app/public/style/less/main.less"
+			],
+			[
+				"main.les",
+				"app/public/style/less/main.less"
+			],
+			[
+				"",
+				"gulpfile.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 244.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
