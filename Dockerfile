@@ -1,11 +1,15 @@
-FROM node:0.10.31
+FROM library/node:0.10
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN apt-get update && apt-get install -y npm git
 
-COPY . /usr/src/app
-RUN npm install -g bower && npm install && bower install --allow-root
+WORKDIR /home
 
 EXPOSE 8081
 
-CMD [ "node", "app.js" ]
+CMD git clone -b cards https://github.com/MaayanLab/lincs-milestones.git \
+	&& cd lincs-milestones \
+	&& npm install \
+	&& npm install -g bower \
+	&& bower -F install --allow-root \
+	&& node app.js
+
