@@ -1,7 +1,7 @@
 var indexControllers = angular.module('indexControllers', ["services"]);
 var idx = window.location.href.lastIndexOf('/');
 var baseURL = window.location.href.slice(0, idx + 1);
-indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getSource',
+indexControllers.controller('cardsCtrl', ['$scope', '$modal', 'centerMap', 'getSource',
     function($scope, $modal, centerMap, getSource) {
 
         getSource.then(function(source) {
@@ -117,66 +117,41 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
             return commonKeys;
         };
         */
-        $scope.showCells = function(cells) {
-            if (cells[0] == "TBD") {
-                // normalize the input format for modal
-                cells = [{ name: "TBD" }];
-            }
-            cells.forEach(function(cell) {
-                delete cell["$$hashKey"];
-            });
+  
+
+        $scope.enlarge = function(doc) {
+            
             $modal.open({
-                templateUrl: baseURL + 'cells.html',
-                controller: 'cellsModalCtrl',
+                templateUrl: baseURL + 'bigCard.html',
+                controller: 'cardModalCtrl',
                 resolve: {
-                    cells: function() {
-                        return cells;
-                    }/*,
-                    commonKeys: function() {
-                        return getCommonKeys(cells);
-                    }*/
+                    doc: function() {
+                        return doc;
+                    }
                 }
             });
         };
-
-        $scope.showPerturbagens = function(perturbagens) {
-            if (perturbagens[0] == "TBD") {
+    }])
+    .controller('cardModalCtrl',
+    ['$scope', '$modalInstance', 'doc',
+        function($scope, $modalInstance, doc) {
+            $scope.doc = doc;
+            $scope.itemsPerPage = 6;
+            $scope.searchThres = 16;
+            if ($scope.doc.perturbagens[0] == "TBD") {
                 // normalize the input format for modal
-                perturbagens = [{ name: "TBD" }]
+                $scope.doc.perturbagens = [{ name: "TBD" }]
             }
-            perturbagens.forEach(function(perturbagen) {
+            $scope.doc.perturbagens.forEach(function(perturbagen) {
                 delete perturbagen["$$hashKey"];
             });
-            $modal.open({
-                templateUrl: baseURL + 'perturbagens.html',
-                controller: 'perturbagensModalCtrl',
-                resolve: {
-                    perturbagens: function() {
-                        return perturbagens;
-                    }/*,
-                    commonKeys: function() {
-                        return getCommonKeys(perturbagens);
-                    }*/
-                }
+            if ($scope.doc['cell-lines'][0] == "TBD") {
+                // normalize the input format for modal
+                $scope.doc['cell-lines'] = [{ name: "TBD" }];
+            }
+            $scope.doc['cell-lines'].forEach(function(cell) {
+                delete cell["$$hashKey"];
             });
-        };
-
-
-    }])
-    .controller('cellsModalCtrl',
-    ['$scope', '$modalInstance', 'cells',
-        function($scope, $modalInstance, cells) {
-            $scope.cells = cells;
-            $scope.cellCount = cells.length;
-            $scope.cancel = function() {
-                $modalInstance.dismiss('cancel');
-            };
-        }])
-    .controller('perturbagensModalCtrl',
-    ['$scope', '$modalInstance', 'perturbagens',
-        function($scope, $modalInstance, perturbagens) {
-            $scope.perturbagens = perturbagens;
-            $scope.perturbagenCount = perturbagens.length;
             $scope.cancel = function() {
                 $modalInstance.dismiss('cancel');
             };

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Milestones">
+<head>
+    <title>Milestones</title>
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="libraries/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="libraries/bootstrap/dist/css/bootstrap.min.css">
+
+<link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/product.css">
+
+
+    <!-- libraries    -->
+    <script src="libraries/jquery/jquery.min.js"></script>
+    <script src="libraries/string/lib/string.min.js"></script>
+    <script src="libraries/underscore/underscore-min.js"></script>
+    <script src="libraries/angular/angular.js"></script>
+    <script src="libraries/angular-smart-table/dist/smart-table.min.js"></script>
+    <script src="versioned/libraries/ui-bootstrap-tpls-0.12.0.min.js"></script>
+
+    <!-- scripts -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services.js"></script>
+    <script src="scripts/cardsCtrl.js"></script>
+    <script src="scripts/css.js"></script>
+
+</head>
+<body ng-controller="cardsCtrl">
+<div class="container">
+<div class="card-input-div">
+    <input placeholder="Global search. Example keywords: image, gene expression, phospho, etc." ng-model="search.$" class="card-input">
+</div>
+    <div class="row">
+        <table class="table col-md-12 card-less-bottom" id="summary">
+            <tbody>
+            <tr>
+                <td>
+                    <span class="bigLetter">Centers:</span>
+                    <span class="bigNum">{{summary.center}}</span>
+                </td>
+                <td>
+                    <span class="bigLetter">Assays:</span>
+                    <span class="bigNum">{{summary.assays}}</span>
+                </td>
+                <td>
+                    <span class="bigLetter">Perturbagens:</span>
+                    <span class="bigNum">~{{summary.perturbagens}}</span>
+                </td>
+                <td>
+                    <span class="bigLetter">Cell-lines:</span>
+                    <span class="bigNum">~{{summary.cellLines}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="row">
+       <div  ng-repeat="doc in docs | filter:search | orderBy:'statusSort'" class="col-sm-2 card">
+           <div class="card-content">
+           <div> 
+                <span ng-style="{'background-color':centerMap[doc.center].color}" class="card-initial"> {{doc.initial}} </span>
+                <a ng-if="doc.released" style="width: 80px;"
+                           class="label label-success card-label"
+                           ng-href="{{doc['release-link']}}" target="_blank" title="Available"> <i class="fa fa-unlock"></i> </a>
+                <span ng-if="!doc.released" class="label label-warning card-label" title="In Production"> <i class="fa fa-lock"></i> </span>
+                <a ng-click="enlarge(doc)" class="card-expand"><i class="fa fa-expand"></i></a>
+           </div>
+           <div class="card-assay"> {{doc['assay']}}</div>
+           <div class="card-counts">
+           <div> perturbagens: 
+                <span class="" ng-if="!(count.type === 'TBD' && count.count === 'TBD')">         {{doc['perturbagens-count']}}
+                </span>
+                <span class="cell-data" ng-if="(count.type === 'TBD' && count.count === 'TBD')">
+                        TBD
+                </span>
+            </div>
+            <div class="" ng-show="doc['cell-lines-count'] > 0">
+                    <span class="" ng-if="doc['cell-lines'][0]['type'] !== 'NA' && count.count !== 'TBD' && doc['cell-lines'][0]['type'] !== 'cell line' && doc['cell-lines'][0]['type'] !== ''">
+                        {{doc['cell-lines'][0]['type']}}: {{doc['cell-lines-count']}}
+                    </span>
+                    <span class=""
+                        ng-if="doc['cell-lines'][0]['type'] == 'cell line'">
+                        cell lines: {{doc['cell-lines-count']}}
+                    </span>
+                    <span class="" ng-if="doc['cell-lines'][0]['type'] === ''">
+                        {{doc['cell-lines-count']}}
+                    </span>
+                    <span class="" ng-if="(count.type === 'TBD' && count.count === 'TBD')">
+                        TBD
+                    </span>
+            </div>
+            <div ng-if="doc.released">
+                release:{{doc['release-date'] | date: 'MM/dd/yyyy'}}
+            </div>
+            </div>
+       </div>
+       </div> 
+    </div>
+</html>
