@@ -30,7 +30,13 @@
 <body ng-controller="cardsCtrl">
 <div class="container">
 <div class="card-input-div">
-    <input placeholder="Global search. Example keywords: image, gene expression, phospho, etc." ng-model="search.$" class="card-input">
+    <input placeholder="Search keywords" ng-model="search.$" class="card-input">
+    <div class="card-keywords"> <span class="card-keywords-title"> Example keywords:</span>                    
+        <span ng-repeat="keyword in keywords">
+            <a ng-class="{'card-keyword-selected': search.$==keyword}" class="btn card-keyword" ng-click="fillKeyword(keyword)"> {{keyword}}</a>
+            
+        </span>
+    </div>
 </div>
     <div class="row">
         <table class="table col-md-12 card-less-bottom" id="summary">

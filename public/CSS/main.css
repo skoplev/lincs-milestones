@@ -232,3 +232,30 @@ th {
 #summary>tbody>tr>td{
   border-top-style:none;
 }
+
+.card-keywords{
+  text-align: center; 
+  margin-top:2px;
+}
+
+.card-keyword{
+     padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+
+.card-keyword:hover{
+  color:white;
+  background-color: #3593b1;
+}
+
+.card-keyword-selected{
+  color:white;
+  background-color: #3593b1;
+}
+
+.card-keywords-title{
+  vertical-align: -6%;
+}

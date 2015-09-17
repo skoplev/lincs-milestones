@@ -3,6 +3,25 @@ var idx = window.location.href.lastIndexOf('/');
 var baseURL = window.location.href.slice(0, idx + 1);
 indexControllers.controller('cardsCtrl', ['$scope', '$modal', 'centerMap', 'getSource',
     function($scope, $modal, centerMap, getSource) {
+        $scope.keywords = [
+            "L1000",
+            "Gene Expression",
+            "HMS",
+            "MEMA",
+            "MCF7",
+            "Image",
+        ];
+
+
+        $scope.search = {};
+
+        $scope.fillKeyword = function(keyword){
+            if($scope.search.$!=keyword)
+                $scope.search.$ = keyword;
+            else
+                $scope.search.$ = "";
+
+        }
 
         getSource.then(function(source) {
             $scope.centerMap = centerMap;
