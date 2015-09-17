@@ -28,6 +28,12 @@
 
 </head>
 <body ng-controller="cardsCtrl">
+<div>
+    <span class="views">
+    <a ng-href="{{baseURL}}product.html" class="btn view">List View</a>
+    <a ng-href="{{baseURL}}cards.html" class="btn view view-current">Card View</a>
+    </span>
+</div>
 <div class="container">
 <div class="card-input-div">
     <input placeholder="Search keywords" ng-model="search.$" class="card-input">
