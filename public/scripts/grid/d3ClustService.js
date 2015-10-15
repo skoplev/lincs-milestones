@@ -3243,49 +3243,49 @@ function d3Clust(d3, lodash) {
         // add border to svg in four separate lines - to not interfere with clicking anything
         ///////////////////////////////////////////////////////////////////////////////////////
         // left border
-        d3.select('#main_svg')
-          .append('rect')
-          .attr('id', 'left_border')
-          .attr('fill', params.viz.super_border_color) //!! prog_colors
-          .attr('width', params.viz.grey_border_width)
-          .attr('height', params.viz.svg_dim.height)
-          .attr('transform', 'translate(0,0)');
+        // d3.select('#main_svg')
+        //   .append('rect')
+        //   .attr('id', 'left_border')
+        //   .attr('fill', params.viz.super_border_color) //!! prog_colors
+        //   .attr('width', params.viz.grey_border_width)
+        //   .attr('height', params.viz.svg_dim.height)
+        //   .attr('transform', 'translate(0,0)');
 
-        // right border
-        d3.select('#main_svg')
-          .append('rect')
-          .attr('id', 'right_border')
-          .attr('fill', params.viz.super_border_color) //!! prog_colors
-          .attr('width', params.viz.grey_border_width)
-          .attr('height', params.viz.svg_dim.height)
-          .attr('transform', function() {
-            var inst_offset = params.viz.svg_dim.width - params.viz.grey_border_width;
-            return 'translate(' + inst_offset + ',0)';
-          });
+        // // right border
+        // d3.select('#main_svg')
+        //   .append('rect')
+        //   .attr('id', 'right_border')
+        //   .attr('fill', params.viz.super_border_color) //!! prog_colors
+        //   .attr('width', params.viz.grey_border_width)
+        //   .attr('height', params.viz.svg_dim.height)
+        //   .attr('transform', function() {
+        //     var inst_offset = params.viz.svg_dim.width - params.viz.grey_border_width;
+        //     return 'translate(' + inst_offset + ',0)';
+        //   });
 
-        // top border
-        d3.select('#main_svg')
-          .append('rect')
-          .attr('id', 'top_border')
-          .attr('fill', params.viz.super_border_color) //!! prog_colors
-          .attr('width', params.viz.svg_dim.width)
-          .attr('height', params.viz.grey_border_width)
-          .attr('transform', function() {
-            var inst_offset = 0;
-            return 'translate(' + inst_offset + ',0)';
-          });
+        // // top border
+        // d3.select('#main_svg')
+        //   .append('rect')
+        //   .attr('id', 'top_border')
+        //   .attr('fill', params.viz.super_border_color) //!! prog_colors
+        //   .attr('width', params.viz.svg_dim.width)
+        //   .attr('height', params.viz.grey_border_width)
+        //   .attr('transform', function() {
+        //     var inst_offset = 0;
+        //     return 'translate(' + inst_offset + ',0)';
+        //   });
 
-        // bottom border
-        d3.select('#main_svg')
-          .append('rect')
-          .attr('id', 'bottom_border')
-          .attr('fill', params.viz.super_border_color) //!! prog_colors
-          .attr('width', params.viz.svg_dim.width)
-          .attr('height', params.viz.grey_border_width)
-          .attr('transform', function() {
-            var inst_offset = params.viz.svg_dim.height - params.viz.grey_border_width;
-            return 'translate(0,' + inst_offset + ')';
-          });
+        // // bottom border
+        // d3.select('#main_svg')
+        //   .append('rect')
+        //   .attr('id', 'bottom_border')
+        //   .attr('fill', params.viz.super_border_color) //!! prog_colors
+        //   .attr('width', params.viz.svg_dim.width)
+        //   .attr('height', params.viz.grey_border_width)
+        //   .attr('transform', function() {
+        //     var inst_offset = params.viz.svg_dim.height - params.viz.grey_border_width;
+        //     return 'translate(0,' + inst_offset + ')';
+        //   });
 
         ///////////////////////////////////
         // initialize translate vector to compensate for label margins

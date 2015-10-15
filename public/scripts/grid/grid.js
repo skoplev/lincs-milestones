@@ -199,6 +199,7 @@ function Docent3Controller($window, $http, d3, d3Data, lodash) {
         getDatasets(vm.searchQ, function(datasets) {
           var concated = dsWithPerts.concat(dsWithCLines, datasets);
           vm.releases = lodash.uniq(concated, false, '_id');
+          d3.selectAll('.click_hlight').style('opacity', 0);
           lodash.each(vm.releases, function(release) {
             var perts = release.metadata.perturbagens;
             var pertIds = lodash.map(perts, function(obj) {

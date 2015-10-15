@@ -2,7 +2,8 @@
 	"folders":
 	[
 		{
-			"path": "."
+			"path": ".",
+      "folder_exclude_patterns": [".idea", ".settings", "bin", "node_modules"]
 		}
 	]
 }
