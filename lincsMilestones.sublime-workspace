@@ -11,6 +11,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "public/scripts/grid/grid.js",
+			"settings":
+			{
+				"buffer_size": 6464,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -19,7 +27,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 107.0,
+		"height": 161.0,
 		"last_filter": "projec",
 		"selected_items":
 		[
@@ -72,7 +80,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 530.0
+		"width": 516.0
 	},
 	"console":
 	{
@@ -95,10 +103,12 @@
 	[
 		"/Users/mmcdermott/Work/lincs-milestones",
 		"/Users/mmcdermott/Work/lincs-milestones/public",
-		"/Users/mmcdermott/Work/lincs-milestones/public/scripts"
+		"/Users/mmcdermott/Work/lincs-milestones/public/scripts",
+		"/Users/mmcdermott/Work/lincs-milestones/public/scripts/grid"
 	],
 	"file_history":
 	[
+		"/Users/mmcdermott/Work/lincs-milestones/lincsMilestones.sublime-project",
 		"/Users/mmcdermott/Work/lincs-milestones/public/scripts/services.js",
 		"/Users/mmcdermott/Work/ldr/app/public/releases/overview/overview.js",
 		"/Users/mmcdermott/Work/ldr/app/public/releases/create/create.js",
@@ -192,8 +202,40 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "public/scripts/grid/grid.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6464,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4459,
+								4459
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/cobalt2.tmTheme",
+							"syntax": "Packages/Babel/JavaScript (Babel).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2732.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -303,9 +345,13 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "",
+		"last_filter": "ldrg",
 		"selected_items":
 		[
+			[
+				"ldrg",
+				"~/Work/LDRgram/untitled.sublime-project"
+			]
 		],
 		"width": 380.0
 	},

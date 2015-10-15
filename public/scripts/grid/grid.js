@@ -170,13 +170,12 @@ function Docent3Controller($window, $http, d3, d3Data, lodash) {
 
     vm.resultIsSearch = true;
     vm.searchQCopy = vm.searchQ;
-    var labelSelected = false;
 
     d3.selectAll('.row_label_text').each(function(d, i) {
       var label = d3.select(this).text();
       if (vm.searchQ === label && !labelSelected) {
         d3.select(this).on('click').apply(this, [d, i]);
-        labelSelected = true;
+        return;
       }
     });
 
@@ -184,13 +183,9 @@ function Docent3Controller($window, $http, d3, d3Data, lodash) {
       var label = d3.select(this).text();
       if (vm.searchQ === label && !labelSelected) {
         d3.select(this).on('click').apply(this, [d, i]);
-        labelSelected = true;
+        return;
       }
     });
-
-    if (labelSelected) {
-      return;
-    }
 
     vm.resultsLoading = true;
 
