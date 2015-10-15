@@ -47,7 +47,9 @@ indexControllers.controller('cardsCtrl', ['$scope', '$modal', 'centerMap', 'getS
                 doc['releaseSort'] = date + center;
                 doc['statusSort'] = status + center;
                 doc.initial = centerMap[doc.center].initial;
-                $scope.docs.push(doc);
+                if (doc.released) {
+                    $scope.docs.push(doc);
+                }
             });
 
             $scope.summary = {
@@ -136,10 +138,10 @@ indexControllers.controller('cardsCtrl', ['$scope', '$modal', 'centerMap', 'getS
             return commonKeys;
         };
         */
-  
+
 
         $scope.enlarge = function(doc) {
-            
+
             $modal.open({
                 templateUrl: baseURL + 'bigCard.html',
                 controller: 'cardModalCtrl',

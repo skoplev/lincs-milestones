@@ -37,10 +37,10 @@
 <div class="container">
 <div class="card-input-div">
     <input placeholder="Search keywords" ng-model="search.$" class="card-input">
-    <div class="card-keywords"> <span class="card-keywords-title"> Example keywords:</span>                    
+    <div class="card-keywords"> <span class="card-keywords-title"> Example keywords:</span>
         <span ng-repeat="keyword in keywords">
             <a ng-class="{'card-keyword-selected': search.$==keyword}" class="btn card-keyword" ng-click="fillKeyword(keyword)"> {{keyword}}</a>
-            
+
         </span>
     </div>
 </div>
@@ -73,7 +73,7 @@
     <div class="row">
        <div  ng-repeat="doc in docs | filter:search | orderBy:'statusSort'" class="col-sm-2 card">
            <div class="card-content">
-           <div> 
+           <div>
                 <span ng-style="{'background-color':centerMap[doc.center].color}" class="card-initial"> {{doc.initial}} </span>
                 <a ng-if="doc.released" style="width: 80px;"
                            class="label label-success card-label"
@@ -83,7 +83,7 @@
            </div>
            <div class="card-assay"> {{doc['assay']}}</div>
            <div class="card-counts">
-           <div> perturbagens: 
+           <div> perturbagens:
                 <span class="" ng-if="!(count.type === 'TBD' && count.count === 'TBD')">         {{doc['perturbagens-count']}}
                 </span>
                 <span class="cell-data" ng-if="(count.type === 'TBD' && count.count === 'TBD')">
@@ -110,6 +110,6 @@
             </div>
             </div>
        </div>
-       </div> 
+       </div>
     </div>
 </html>

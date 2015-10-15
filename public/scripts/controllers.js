@@ -28,7 +28,9 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
                 doc['releaseSort'] = date + center;
                 doc['statusSort'] = status + center;
                 doc.initial = centerMap[doc.center].initial;
-                $scope.docs.push(doc);
+                if (doc.released) {
+                    $scope.docs.push(doc);
+                }
             });
 
             $scope.summary = {
