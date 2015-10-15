@@ -1,0 +1,43 @@
+#release-search {
+  background: $color-white;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 2px;
+  height: 47px;
+  position: relative;
+
+  #search-bar {
+    background: none;
+    border: 0;
+    font-size: 18px;
+    height: 30px;
+    left: 7px;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    position: absolute;
+    top: 7px;
+    width: 80%;
+
+  }
+
+  #search-btn {
+    background: url('img/ico-search.svg') no-repeat 50% 50%;
+    background-size: 16px 16px;
+    border: 0;
+    border-left: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 0 2px 2px 0;
+    cursor: pointer;
+    height: 45px;
+    outline: 0;
+    position: absolute;
+    right: 0;
+    text-indent: -9999em;
+    top: 0;
+    width: 46px;
+
+    &:hover {
+      background: $color-blue url('img/ico-search-hover.svg') no-repeat 50% 50%;
+      background-size: 16px 16px;
+    }
+  }
+}

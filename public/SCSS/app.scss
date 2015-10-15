@@ -1,0 +1,125 @@
+@import 'normalize';
+@import 'base';
+@import 'clustergram';
+@import 'search';
+
+body {
+  padding: 40px 0 0;
+}
+
+.win-too-small {
+  color: $color-blue;
+  margin: 100px;
+  text-align: center;
+  @media all and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.clust-content {
+  margin: 0 100px;
+  @media all and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.view-wrapper {
+  padding: 0 50px;
+  display: inline-block;
+  float: right;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin: 0 auto;
+}
+
+.clustergram {
+  width: 100%;
+  background-color: $color-white;
+  overflow: hidden;
+  padding: 20px 0 60px;
+
+  @media all and (max-width: 580px) {
+    display: none;
+  }
+}
+
+.releases {
+  align-items: center;
+  border-top: 1px solid $color-gray;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  max-width: 100%;
+  width: 100%;
+}
+
+.dc-release {
+  width: 100%;
+  padding: 40px 0;
+  border-top: 1px solid $color-gray-light;
+}
+
+.title {
+  font-weight: 400;
+}
+
+.emph {
+  font-weight: 700;
+}
+
+.highlight-primary {
+  color: $color-blue;
+}
+
+.dc-rel-header {
+  display: flex;
+  justify-content: space-between;
+
+  h4 {
+    margin: 0;
+    color: $color-blue;
+  }
+}
+
+.status-released {
+  color: $color-green;
+}
+
+.status-awaiting {
+  color: $color-orange;
+}
+
+.dc-rel-info {
+  p {
+    margin: 0;
+  }
+}
+
+.dc-rel-urls {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+
+  a {
+    color: $color-blue-light;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-blue;
+    }
+  }
+}
+
+.push {
+  height: 180px;
+}
+
+.footer {
+  background-color: $footer-background-color;
+  border-top: 1px solid $footer-border-color;
+  height: 120px;
+}

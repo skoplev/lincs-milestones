@@ -1,0 +1,13 @@
+<div>
+  <div id='button-container'>
+    <div id='toggle-order' class="btn-group" data-toggle="buttons">
+      <button ng-class="vm.active == 'clust' ? 'active' : 'inactive';" class="clust-btn"
+      ng-click="vm.setOrder('clust');">Cluster</button>
+      <button ng-class="vm.active == 'rank' ? 'active' : 'inactive';" class="clust-btn"
+      ng-click="vm.setOrder('rank');">Sort</button>
+    </div>
+  </div>
+  <div id='clust-and-row-container'>
+    <div id='svg-div' class='svg-div'></div>
+  </div>
+</div>
