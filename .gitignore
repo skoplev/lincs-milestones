@@ -6,3 +6,4 @@ R/sync.ffs_db
 *.swp
 *.iml
 .tern-port
+*.sublime*

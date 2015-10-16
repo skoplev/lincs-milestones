@@ -3,7 +3,7 @@
 	[
 		{
 			"path": ".",
-      "folder_exclude_patterns": [".idea", ".settings", "bin", "node_modules"]
+      "folder_exclude_patterns": [".idea", ".settings", "bin", "node_modules", "libraries"]
 		}
 	]
 }

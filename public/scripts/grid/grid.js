@@ -5,7 +5,7 @@ angular
   .controller('Docent3Controller', Docent3Controller);
 
 /* @ngInject */
-function Docent3Controller($window, $http, d3, d3Data, lodash) {
+function Docent3Controller($window, $scope, $http, d3, d3Data, lodash) {
 
   var vm = this;
   var idx = window.location.href.lastIndexOf('/');
@@ -17,6 +17,12 @@ function Docent3Controller($window, $http, d3, d3Data, lodash) {
   vm.tileCb = tileCb;
   vm.searchQ = '';
   vm.searchQCopy = '';
+  vm.keywords = [
+    'Collagen I',
+    'L1000',
+    'MEMA',
+    'MCF7',
+  ];
   vm.query = {
     dataset: '',
     cellLine: '',
@@ -26,6 +32,7 @@ function Docent3Controller($window, $http, d3, d3Data, lodash) {
     network_data: d3Data,
     svg_div_id: 'svg-div',
     row_label: 'Assays',
+    row_label_scale: 0.7,
     col_label: 'Cell Lines',
     outer_margins: {
       'top': 'inherit',
@@ -53,30 +60,17 @@ function Docent3Controller($window, $http, d3, d3Data, lodash) {
   function clickLabel(label, rowCol) {
     vm.resultIsSearch = false;
     d3.selectAll('.highlight').style('opacity', 0);
-    if (isTransposed()) {
-      vm.query = {
-        cellLine: rowCol === 'row' ? label : null,
-        dataset: rowCol === 'col' ? label : null
-      };
-    } else {
-      vm.query = {
-        cellLine: rowCol === 'col' ? label : null,
-        dataset: rowCol === 'row' ? label : null
-      };
-    }
+    vm.query = {
+      cellLine: rowCol === 'col' ? label : null,
+      dataset: rowCol === 'row' ? label : null
+    };
     queryLDR();
-  }
-
-  function isTransposed() {
-    var winWidth = angular.element(window).width();
-    return (winWidth < 992 && winWidth > 768);
   }
 
   function tileCb(tileInfo) {
     d3.selectAll('.tile').each(function(d, i) {
       if (!lodash.isEqual(d, tileInfo)) {
-        d3.select(this).selectAll('.highlight')
-          .style('opacity', 0);
+        d3.select(this).selectAll('.highlight').style('opacity', 0);
       }
     });
     vm.resultIsSearch = false;
@@ -84,8 +78,8 @@ function Docent3Controller($window, $http, d3, d3Data, lodash) {
       return pert._id;
     });
     vm.query = {
-      dataset: isTransposed() ? tileInfo.col : tileInfo.row,
-      cellLine: isTransposed() ? tileInfo.row : tileInfo.col,
+      dataset: tileInfo.row,
+      cellLine: tileInfo.col,
       perturbagens: pertIds.join(',')
     };
     queryLDR();
@@ -163,19 +157,22 @@ function Docent3Controller($window, $http, d3, d3Data, lodash) {
     });
   }
 
-  function search() {
-    if (!vm.searchQ.length) {
+  function search(query) {
+    if (query.length) {
+      vm.searchQ = query;
+    } else if (!vm.searchQ.length) {
       return;
     }
 
     vm.resultIsSearch = true;
     vm.searchQCopy = vm.searchQ;
+    var labelSelected = false;
 
     d3.selectAll('.row_label_text').each(function(d, i) {
       var label = d3.select(this).text();
       if (vm.searchQ === label && !labelSelected) {
         d3.select(this).on('click').apply(this, [d, i]);
-        return;
+        labelSelected = true;
       }
     });
 
@@ -183,9 +180,13 @@ function Docent3Controller($window, $http, d3, d3Data, lodash) {
       var label = d3.select(this).text();
       if (vm.searchQ === label && !labelSelected) {
         d3.select(this).on('click').apply(this, [d, i]);
-        return;
+        labelSelected = true;
       }
     });
+
+    if (labelSelected) {
+      return;
+    }
 
     vm.resultsLoading = true;
 
@@ -231,7 +232,43 @@ function Docent3Controller($window, $http, d3, d3Data, lodash) {
         }
       });
     });
-
   }
 
+  vm.summary = {
+    center: 0,
+    assays: 0,
+    cellLines: 0,
+    perturbagens: 0
+  };
+
+  function countUpTo(field, count, max, step, time) {
+    setTimeout(function() {
+      if (count === max) {
+        return;
+      } else if (count + step > max) {
+        countUpTo(field, count, max, 1, 0);
+      } else {
+        count = count + step;
+        vm.summary[field] = count;
+        $scope.$apply();
+        countUpTo(field, count, max, step, time);
+      }
+    }, time);
+  }
+
+  function generateCounts() {
+    $http({
+      url: 'http://amp.pharm.mssm.edu/LDR/api/counts/released',
+      method: 'GET',
+    }).then(function(response) {
+      var counts = response.data;
+      counts.center = 6;
+      countUpTo('center', 0, counts.center, 1, 50);
+      countUpTo('assays', 0, counts.assays, 1, 10);
+      countUpTo('perturbagens', 0, counts.perturbagens, 50, 10);
+      countUpTo('cellLines', 0, counts.cellLines, 5, 10);
+    });
+  }
+
+  generateCounts();
 }

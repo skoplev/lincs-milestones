@@ -1,11 +1,6 @@
 @import 'normalize';
 @import 'base';
 @import 'clustergram';
-@import 'search';
-
-body {
-  padding: 40px 0 0;
-}
 
 .win-too-small {
   color: $color-blue;
@@ -17,14 +12,9 @@ body {
 }
 
 .clust-content {
-  margin: 0 100px;
-  @media all and (max-width: 768px) {
-    display: none;
-  }
 }
 
 .view-wrapper {
-  padding: 0 50px;
   display: inline-block;
   float: right;
 }
@@ -35,14 +25,26 @@ body {
 }
 
 .clustergram {
-  width: 100%;
-  background-color: $color-white;
-  overflow: hidden;
-  padding: 20px 0 60px;
 
-  @media all and (max-width: 580px) {
-    display: none;
-  }
+}
+
+.search,
+.releases {
+  margin: 0 40px;
+}
+
+.card-input-div {
+  width: 750px;
+  margin: 40px auto 0;
+}
+
+.card-input {
+  line-height: inherit;
+}
+
+.table {
+  width: 750px;
+  margin: 0 auto;
 }
 
 .releases {
@@ -50,9 +52,7 @@ body {
   border-top: 1px solid $color-gray;
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
-  max-width: 100%;
-  width: 100%;
+  margin-top: 10px;
 }
 
 .dc-release {

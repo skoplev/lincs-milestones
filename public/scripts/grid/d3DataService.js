@@ -244,6 +244,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 0,
       'target': 22,
       'value': 2.0
@@ -257,6 +258,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 0,
       'target': 24,
       'value': 2.0
@@ -270,6 +272,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 0,
       'target': 31,
       'value': 2.0
@@ -403,6 +406,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 1,
       'target': 0,
       'value': 32.0
@@ -536,6 +540,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 1,
       'target': 1,
       'value': 32.0
@@ -669,6 +674,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 1,
       'target': 11,
       'value': 32.0
@@ -802,6 +808,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 1,
       'target': 15,
       'value': 32.0
@@ -935,6 +942,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 1,
       'target': 16,
       'value': 32.0
@@ -952,6 +960,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfca8',
         'name': 'Vemurafenib + JNK-IN-8'
       }],
+      'highlight': 0,
       'source': 2,
       'target': 3,
       'value': 3.0
@@ -969,6 +978,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfca8',
         'name': 'Vemurafenib + JNK-IN-8'
       }],
+      'highlight': 0,
       'source': 2,
       'target': 10,
       'value': 3.0
@@ -986,6 +996,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfca8',
         'name': 'Vemurafenib + JNK-IN-8'
       }],
+      'highlight': 0,
       'source': 2,
       'target': 20,
       'value': 3.0
@@ -1003,6 +1014,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfca8',
         'name': 'Vemurafenib + JNK-IN-8'
       }],
+      'highlight': 0,
       'source': 2,
       'target': 21,
       'value': 3.0
@@ -1040,6 +1052,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfcc1',
         'name': 'MRT67307'
       }],
+      'highlight': 0,
       'source': 3,
       'target': 4,
       'value': 8.0
@@ -1389,6 +1402,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 4,
       'target': 0,
       'value': 86.0
@@ -1738,6 +1752,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 4,
       'target': 1,
       'value': 86.0
@@ -2087,6 +2102,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 4,
       'target': 5,
       'value': 86.0
@@ -2436,6 +2452,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 4,
       'target': 7,
       'value': 86.0
@@ -2785,6 +2802,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 4,
       'target': 8,
       'value': 86.0
@@ -3134,6 +3152,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 4,
       'target': 11,
       'value': 86.0
@@ -3483,6 +3502,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 4,
       'target': 16,
       'value': 86.0
@@ -3916,6 +3936,7 @@ function d3Data() {
         '_id': '55a95ff600bce706c3cdfe42',
         'name': 'WNT10a'
       }],
+      'highlight': 0,
       'source': 5,
       'target': 16,
       'value': 107.0
@@ -4045,6 +4066,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 6,
       'target': 0,
       'value': 31.0
@@ -4174,6 +4196,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 6,
       'target': 1,
       'value': 31.0
@@ -4303,6 +4326,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 6,
       'target': 11,
       'value': 31.0
@@ -4432,6 +4456,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 6,
       'target': 15,
       'value': 31.0
@@ -4561,6 +4586,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc78',
         'name': 'zebularine'
       }],
+      'highlight': 0,
       'source': 6,
       'target': 16,
       'value': 31.0
@@ -5966,6 +5992,7 @@ function d3Data() {
         '_id': '55a95fed00bce706c3cdfc13',
         'name': 'Cyclosporine'
       }],
+      'highlight': 0,
       'source': 7,
       'target': 17,
       'value': 350.0
@@ -5979,6 +6006,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 7,
       'target': 22,
       'value': 2.0
@@ -5992,6 +6020,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 7,
       'target': 23,
       'value': 2.0
@@ -6005,6 +6034,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 7,
       'target': 24,
       'value': 2.0
@@ -6018,6 +6048,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 7,
       'target': 25,
       'value': 2.0
@@ -6031,6 +6062,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 7,
       'target': 26,
       'value': 2.0
@@ -6044,6 +6076,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 7,
       'target': 27,
       'value': 2.0
@@ -6057,6 +6090,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 7,
       'target': 28,
       'value': 2.0
@@ -6070,6 +6104,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 7,
       'target': 29,
       'value': 2.0
@@ -6083,6 +6118,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 7,
       'target': 30,
       'value': 2.0
@@ -6096,6 +6132,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 7,
       'target': 31,
       'value': 2.0
@@ -6109,6 +6146,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 7,
       'target': 32,
       'value': 2.0
@@ -6134,6 +6172,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 8,
       'target': 2,
       'value': 5.0
@@ -6159,6 +6198,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 8,
       'target': 3,
       'value': 5.0
@@ -6184,6 +6224,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 8,
       'target': 9,
       'value': 5.0
@@ -6209,6 +6250,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 8,
       'target': 10,
       'value': 5.0
@@ -6234,6 +6276,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 8,
       'target': 13,
       'value': 5.0
@@ -6259,6 +6302,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 8,
       'target': 14,
       'value': 5.0
@@ -6284,6 +6328,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 8,
       'target': 18,
       'value': 5.0
@@ -6309,6 +6354,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 8,
       'target': 19,
       'value': 5.0
@@ -6334,6 +6380,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 8,
       'target': 20,
       'value': 5.0
@@ -6359,6 +6406,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 8,
       'target': 21,
       'value': 5.0
@@ -6372,6 +6420,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 9,
       'target': 23,
       'value': 2.0
@@ -6385,6 +6434,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd81',
         'name': 'amyotrophic lateral sclerosis'
       }],
+      'highlight': 0,
       'source': 9,
       'target': 24,
       'value': 2.0
@@ -6410,6 +6460,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 2,
       'value': 5.0
@@ -6435,6 +6486,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 3,
       'value': 5.0
@@ -6480,6 +6532,7 @@ function d3Data() {
         '_id': '55a95ff200bce706c3cdfd38',
         'name': 'PD0325901'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 6,
       'value': 10.0
@@ -6505,6 +6558,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 9,
       'value': 5.0
@@ -6530,6 +6584,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 10,
       'value': 5.0
@@ -6575,6 +6630,7 @@ function d3Data() {
         '_id': '55a95ff200bce706c3cdfd38',
         'name': 'PD0325901'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 12,
       'value': 10.0
@@ -6600,6 +6656,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 13,
       'value': 5.0
@@ -6625,6 +6682,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 14,
       'value': 5.0
@@ -6650,6 +6708,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 18,
       'value': 5.0
@@ -6675,6 +6734,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 19,
       'value': 5.0
@@ -6700,6 +6760,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 20,
       'value': 5.0
@@ -6725,6 +6786,7 @@ function d3Data() {
         '_id': '55a95ff000bce706c3cdfc8b',
         'name': 'SB590885'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 21,
       'value': 5.0
@@ -6742,6 +6804,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd90',
         'name': 'tunicamycin'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 22,
       'value': 3.0
@@ -6759,6 +6822,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd90',
         'name': 'tunicamycin'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 24,
       'value': 3.0
@@ -6776,6 +6840,7 @@ function d3Data() {
         '_id': '55a95ff300bce706c3cdfd90',
         'name': 'tunicamycin'
       }],
+      'highlight': 0,
       'source': 10,
       'target': 31,
       'value': 3.0

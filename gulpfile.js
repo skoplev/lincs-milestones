@@ -9,6 +9,7 @@
 var gulp = require('gulp');
 var path = require('path');
 var minifyCss = require('gulp-minify-css');
+var runSequence = require('run-sequence');
 var ngAnnotate = require('gulp-ng-annotate');
 var argv = require('minimist')(process.argv.slice(2));
 var $ = require('gulp-load-plugins')();
@@ -41,4 +42,16 @@ gulp.task('scss', function() {
     .pipe(gulp.dest('public/CSS'));
 });
 
-gulp.task('default', ['scss', 'js']);
+gulp.task('build', function(callback) {
+  runSequence('scss', 'js' , callback);
+  });
+
+gulp.task('build:watch', function(callback) {
+  runSequence('build' , function() {
+    gulp.watch('public/SCSS/**/*.scss', ['scss']);
+    gulp.watch('public/scripts/grid/**/*.js', ['js']);
+    callback();
+  });
+});
+
+gulp.task('default', ['build:watch']);

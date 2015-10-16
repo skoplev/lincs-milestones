@@ -1,6 +1,10 @@
+html {
+  width: 850px;
+  margin: 0 auto;
+}
+
 body {
-    padding: 50px;
-    padding-top:40px;
+    padding: 10px;
 }
 body,
 h1,h2,h3,h4,h5,h6,
@@ -236,7 +240,7 @@ th {
 }
 
 .card-keywords{
-  text-align: center; 
+  text-align: center;
   margin-top:2px;
 }
 
