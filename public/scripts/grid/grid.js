@@ -158,12 +158,17 @@ function Docent3Controller($window, $scope, $http, d3, d3Data, lodash) {
   }
 
   function checkForIcons(release) {
+    var dsName = release.datasetName;
+    var assay = release.metadata.assay[0];
+    // Assay RegExps
     var l1000RegEx = /L1000/i;
-    release.useSlicer = false;
-    if (l1000RegEx.test(release.datasetName) ||
-      l1000RegEx.test(release.metadata.assay[0])) {
-        release.useSlicer = true;
-    }
+    var p100RegEx = /P100/i;
+    var isL1000 = l1000RegEx.test(dsName) || l1000RegEx.test(assay);
+    var isP100 = p100RegEx.test(dsName) || p100RegEx.test(assay);
+
+    release.useSlicer = isL1000;
+    release.usePiLINCS = isP100;
+    release.useMosaic = isP100;
   }
 
   function search(query) {
