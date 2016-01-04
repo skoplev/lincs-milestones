@@ -157,6 +157,15 @@ function Docent3Controller($window, $scope, $http, d3, d3Data, lodash) {
     });
   }
 
+  function checkForIcons(release) {
+    var l1000RegEx = /L1000/i;
+    release.useSlicer = false;
+    if (l1000RegEx.test(release.datasetName) ||
+      l1000RegEx.test(release.metadata.assay[0])) {
+        release.useSlicer = true;
+    }
+  }
+
   function search(query) {
     if (query.length) {
       vm.searchQ = query;
@@ -193,10 +202,11 @@ function Docent3Controller($window, $scope, $http, d3, d3Data, lodash) {
     getDatasetsWithPerts(vm.searchQ, function(dsWithPerts) {
       getDatasetsWithCLines(vm.searchQ, function(dsWithCLines) {
         getDatasets(vm.searchQ, function(datasets) {
-          var concated = dsWithPerts.concat(dsWithCLines, datasets);
-          vm.releases = lodash.uniq(concated, false, '_id');
+          var concatArr = dsWithPerts.concat(dsWithCLines, datasets);
+          vm.releases = lodash.uniq(concatArr, false, '_id');
           d3.selectAll('.click_hlight').style('opacity', 0);
           lodash.each(vm.releases, function(release) {
+            checkForIcons(release);
             var perts = release.metadata.perturbagens;
             var pertIds = lodash.map(perts, function(obj) {
               return obj._id;
@@ -225,10 +235,11 @@ function Docent3Controller($window, $scope, $http, d3, d3Data, lodash) {
       params: vm.query
     }).then(function(response) {
       vm.releases = [];
-      lodash.each(response.data, function(obj) {
-        if (obj.released) {
-          obj.releaseDates.upcoming = new Date(obj.releaseDates.upcoming);
-          vm.releases.push(obj);
+      lodash.each(response.data, function(release) {
+        if (release.released) {
+          release.releaseDates.upcoming = new Date(release.releaseDates.upcoming);
+          checkForIcons(release)
+          vm.releases.push(release);
         }
       });
     });

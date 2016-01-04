@@ -1,6 +1,7 @@
 @import 'normalize';
 @import 'base';
 @import 'clustergram';
+@import 'icons';
 
 .win-too-small {
   color: $color-blue;
@@ -103,6 +104,11 @@
     padding-left: 10px;
     padding-right: 10px;
     text-decoration: none;
+    text-align: center;
+
+    img {
+      margin-bottom: 1px;
+    }
 
     &:hover {
       color: $color-blue;
