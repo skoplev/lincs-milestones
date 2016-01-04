@@ -1,172 +1,155 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="Milestones">
+
 <head>
-    <title>Milestones</title>
-    <!-- CSS -->
-    <link rel="stylesheet"
-          href="libraries/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css"
-          href="libraries/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="CSS/main.css">
-    <link rel="stylesheet" href="CSS/product.css">
-
-    <!-- libraries    -->
-    <script src="libraries/jquery/jquery.min.js"></script>
-    <script src="libraries/string/lib/string.min.js"></script>
-    <script src="libraries/underscore/underscore-min.js"></script>
-    <script src="libraries/angular/angular.js"></script>
-    <script src="libraries/angular-smart-table/dist/smart-table.min.js"></script>
-    <script src="versioned/libraries/ui-bootstrap-tpls-0.12.0.min.js"></script>
-
-    <!-- scripts -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/services.js"></script>
-    <script src="scripts/controllers.js"></script>
+  <title>Milestones</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="libraries/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="libraries/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="CSS/main.css">
+  <link rel="stylesheet" href="CSS/product.css">
+  <!-- libraries    -->
+<script src="libraries/jquery/jquery.min.js"></script>
+<script src="libraries/string/lib/string.min.js"></script>
+<script src="libraries/underscore/underscore-min.js"></script>
+<script src="libraries/angular/angular.js"></script>
+<script src="libraries/angular-smart-table/dist/smart-table.min.js"></script>
+<script src="versioned/libraries/ui-bootstrap-tpls-0.12.0.min.js"></script>
+<!-- scripts -->
+<script src="scripts/app.js"></script>
+<script src="scripts/services.js"></script>
+<script src="scripts/controllers.js"></script>
 </head>
+
 <body ng-controller="tableCtrl">
-<div class="container">
+  <div>
+    <span class="views">
+    <a ng-href="{{baseURL}}product.html" class="btn view view-current">List View</a>
+    <a ng-href="{{baseURL}}cards.html" class="btn view">Card View</a>
+    <a ng-href="{{baseURL}}grid.html" class="btn view">Grid View</a>
+    </span>
+  </div>
+  <p class="description">
+    The following view displays all released datasets in a table with external hyperlinks to the data sources and internal links for details about the cells and the perturbations applied within each dataset.
+  </p>
+  <div class="container">
     <div class="row">
-        <table class="table col-md-12" id="summary">
-            <tbody>
-            <tr>
-                <td>
-                    <span class="bigLetter">Centers:</span>
-                    <span class="bigNum">{{summary.center}}</span>
-                </td>
-                <td>
-                    <span class="bigLetter">Assays:</span>
-                    <span class="bigNum">{{summary.assays}}</span>
-                </td>
-                <td>
-                    <span class="bigLetter">Perturbagens:</span>
-                    <span class="bigNum">~{{summary.perturbagens}}</span>
-                </td>
-                <td>
-                    <span class="bigLetter">Cell-lines:</span>
-                    <span class="bigNum">~{{summary.cellLines}}</span>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+      <table class="table col-md-12" id="summary">
+        <tbody>
+          <tr>
+            <td>
+              <span class="bigLetter">Centers:</span>
+              <span class="bigNum">{{summary.center}}</span>
+            </td>
+            <td>
+              <span class="bigLetter">Assays:</span>
+              <span class="bigNum">{{summary.assays}}</span>
+            </td>
+            <td>
+              <span class="bigLetter">Perturbagens:</span>
+              <span class="bigNum">~{{summary.perturbagens}}</span>
+            </td>
+            <td>
+              <span class="bigLetter">Cell-lines:</span>
+              <span class="bigNum">~{{summary.cellLines}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="row">
-        <table st-table="displayedDocs" st-safe-src="docs"
-               class="table table-striped col-md-12">
-            <thead>
-            <tr>
-                <th st-sort="centerSort" class="st-sort">
-                    Center
-                </th>
-                <th>Assay/Dataset</th>
-                <th>Perturbagens</th>
-                <th>Cells</th>
-                <th>Readouts</th>
-                <th st-sort="releaseSort" class="st-sort">Release<sup>***</sup>
-                </th>
-                <th st-sort-default="true" st-sort="statusSort" class="st-sort">Status</th>
-            </tr>
-            <tr>
-                <th colspan="7">
-                    <input placeholder="Global search. Example keywords: image, gene expression, phospho, etc."
-                           st-search type="search" class="form-control"/>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="doc in displayedDocs">
-                <td class="center-name displayed-data"><a
-                        ng-href="{{centerMap[doc['center']]['url']}}"
-                        target="_blank"><img class="logo"
-                                             ng-src="{{centerMap[doc['center']]['logo']}}"
-                                             title="{{centerMap[doc['center']]['fullName']}}"></a>
-                </td>
-                <td class="displayed-data">
-                    <p class="cell-data">
-                    {{doc['assay']}}
-                    </p>
-                </td>
-                <td>
-                                    <a ng-click="showPerturbagens(doc['perturbagens'])"
-                                       class="clickable" ng-if="doc['perturbagens-count'] > 0">
-                                        <div class="displayed-data">
-                                            <p class="cell-data-count"
-                                               ng-if="!(count.type === 'TBD' && count.count === 'TBD')">
-                                                {{doc['perturbagens-count']}}
-                                            </p>
-
-                                            <p class="cell-data"
-                                               ng-if="(count.type === 'TBD' && count.count === 'TBD')">
-                                                TBD
-                                            </p>
-                                        </div>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a ng-click="showCells(doc['cell-lines'])"
-                                       class="clickable"
-                                       ng-show="doc['cell-lines-count'] > 0">
-                                        <div class="displayed-data">
-                                            <p class="cell-data-count"
-                                               ng-if="doc['cell-lines'][0]['type'] !== 'NA' && count.count !== 'TBD' && doc['cell-lines'][0]['type'] !== 'cell line' && doc['cell-lines'][0]['type'] !== ''">
-                                                {{doc['cell-lines'][0]['type']}}: {{doc['cell-lines-count']}}
-                                            </p>
-                                            <p class="cell-data-count"
-                                               ng-if="doc['cell-lines'][0]['type'] == 'cell line'">
-                                                cell lines: {{doc['cell-lines-count']}}
-                                            </p>
-                                            <p class="cell-data-count"
-                                                ng-if="doc['cell-lines'][0]['type'] === ''">{{doc['cell-lines-count']}}</p>
-                                            <p class="cell-data-count"
-                                               ng-if="(count.type === 'TBD' && count.count === 'TBD')">
-                                                TBD
-                                            </p>
-                                        </div>
-                                    </a>
-                                </td>
-                <td>
-                    <div class="displayed-data"
-                         ng-repeat="readout in doc['readouts']">
-                        {{readout}}
-                    </div>
-                </td>
-                <td ng-if="doc.released" class="displayed-data">
-                    <p class="cell-data">
-                        {{doc['release-date'] | date: 'MM/dd/yyyy'}}
-                    </p>
-                </td>
-                <td ng-if="!doc.released" class="displayed-data"><p
-                        class="cell-data"></p></td>
-                <td style="min-width: 80px;">
-                    <span ng-if="!doc.released" class="label label-warning"> In Production </span>
-
-                    <div ng-if="doc.released">
-                        <a style="width: 80px;"
-                           class="label label-success"
-                           ng-href="{{doc['release-link']}}" target="_blank"> Available </a>
-
-                        <div style="font-size:0.9em"> (ID:
-                            {{extractID(doc['release-link'])}})
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <td colspan="7" class="text-center">
-                    <div st-pagination="" st-items-by-page="13"
-                         st-displayed-pages="7"></div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="7" style="border: none; font-size: 12px;">
-                    <p><sup>***</sup> Only first level release dates are shown
-                    </p>
-                </td>
-            </tr>
-            </tfoot>
-        </table>
+    <div class="row table-container">
+      <table st-table="displayedDocs" st-safe-src="docs" class="table table-striped col-md-12">
+        <thead>
+          <tr>
+            <th st-sort="centerSort" class="st-sort">
+              Center
+            </th>
+            <th>Assay/Dataset</th>
+            <th>Perturbagens</th>
+            <th>Cells</th>
+            <th>Readouts</th>
+            <th st-sort="releaseSort" class="st-sort">Release<sup>***</sup>
+            </th>
+            <th st-sort-default="true" st-sort="statusSort" class="st-sort">Status</th>
+          </tr>
+          <tr>
+            <th colspan="7">
+              <input placeholder="Global search. Example keywords: image, gene expression, phospho, etc." st-search type="search" class="form-control" />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="doc in displayedDocs">
+            <td class="center-name displayed-data">
+              <a ng-href="{{centerMap[doc['center']]['url']}}" target="_blank"><img class="logo" ng-src="{{centerMap[doc['center']]['logo']}}" title="{{centerMap[doc['center']]['fullName']}}"></a>
+            </td>
+            <td class="displayed-data">
+              <p class="cell-data">
+                {{doc['assay']}}
+              </p>
+            </td>
+            <td>
+              <a ng-click="showPerturbagens(doc['perturbagens'])" class="clickable" ng-if="doc['perturbagens-count'] > 0">
+                <div class="displayed-data">
+                  <p class="cell-data-count" ng-if="!(count.type === 'TBD' && count.count === 'TBD')">
+                    {{doc['perturbagens-count']}}
+                  </p>
+                  <p class="cell-data" ng-if="(count.type === 'TBD' && count.count === 'TBD')">
+                    TBD
+                  </p>
+                </div>
+              </a>
+            </td>
+            <td>
+              <a ng-click="showCells(doc['cell-lines'])" class="clickable" ng-show="doc['cell-lines-count'] > 0">
+                <div class="displayed-data">
+                  <p class="cell-data-count" ng-if="doc['cell-lines'][0]['type'] !== 'NA' && count.count !== 'TBD' && doc['cell-lines'][0]['type'] !== 'cell line' && doc['cell-lines'][0]['type'] !== ''">
+                    {{doc['cell-lines'][0]['type']}}: {{doc['cell-lines-count']}}
+                  </p>
+                  <p class="cell-data-count" ng-if="doc['cell-lines'][0]['type'] == 'cell line'">
+                    cell lines: {{doc['cell-lines-count']}}
+                  </p>
+                  <p class="cell-data-count" ng-if="doc['cell-lines'][0]['type'] === ''">{{doc['cell-lines-count']}}</p>
+                  <p class="cell-data-count" ng-if="(count.type === 'TBD' && count.count === 'TBD')">
+                    TBD
+                  </p>
+                </div>
+              </a>
+            </td>
+            <td>
+              <div class="displayed-data" ng-repeat="readout in doc['readouts']">
+                {{readout}}
+              </div>
+            </td>
+            <td ng-if="doc.released" class="displayed-data">
+              <p class="cell-data">
+                {{doc['release-date'] | date: 'MM/dd/yyyy'}}
+              </p>
+            </td>
+            <td ng-if="!doc.released" class="displayed-data">
+              <p class="cell-data"></p>
+            </td>
+            <td style="min-width: 80px;">
+              <span ng-if="!doc.released" class="label label-warning"> In Production </span>
+              <div ng-if="doc.released">
+                <a style="width: 80px;" class="label label-success" ng-href="{{doc['release-link']}}" target="_blank"> Available </a>
+                <div style="font-size:0.9em"> (ID: {{extractID(doc['release-link'])}})
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="7" style="border: none; font-size: 12px;">
+              <p><sup>***</sup> Only first level release dates are shown
+              </p>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
-</div>
+  </div>
 </body>
+
 </html>

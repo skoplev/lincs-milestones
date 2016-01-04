@@ -1,0 +1,94 @@
+<div class="modal-header perturbagen-modal-header" style="border-bottom-width:0">
+	<button type="button" class="close"   ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<h4 class="modal-title example-header">{{doc.assay}}
+         <a ng-if="doc.released" 
+                           class="label label-success big-card-label"
+                           ng-href="{{doc['release-link']}}" target="_blank" title="Available"> <i class="fa fa-unlock"></i> </a>
+                <span ng-if="!doc.released" class="label label-warning card-label" title="In Production"> <i class="fa fa-lock"></i> </span>
+    </h4>
+</div>
+<div class="modal-body custom-modal-body card-custom-modal-body">
+    <h5> Perturbagens: <span class="big-card-count">{{doc['perturbagens-count']}}</span></h5>
+    <table st-table="doc.perturbagens" class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+        </tr>
+        <tr ng-if="doc['perturbagens-count']>searchThres">
+            <th colspan="2">
+                <input placeholder="Search" st-search type="search"
+                       class="form-control"/>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr st-select-row="entry" st-selected-entry="selectedEntry"
+            ng-repeat="entry in doc.perturbagens">
+            <td class="col-xs-5">{{entry.name}}</td>
+            <td>{{entry.type ? entry.type : 'NA'}}</td>
+        </tr>
+        </tbody>
+        <tfoot ng-if="doc['perturbagens-count']>itemsPerPage">
+        <tr>
+            <td colspan="2">
+                <div st-pagination="" st-items-by-page="itemsPerPage"
+                     st-displayed-pages="" class="custom-pagination"></div>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+    <div ng-if="doc['cell-lines-count'] && doc['cell-lines-count'] > 0">
+     <h5 class="" ng-if="doc['cell-lines'][0]['type'] !== 'NA' && count.count !== 'TBD' && doc['cell-lines'][0]['type'] !== 'cell line' && doc['cell-lines'][0]['type'] !== ''">
+         {{doc['cell-lines'][0]['type']}}: <span class="big-card-count">{{doc['cell-lines-count']}}</span>
+    </h5>
+    <h5 class="" ng-if="doc['cell-lines'][0]['type'] == 'cell line'">
+        cell lines: <span class="big-card-count">{{doc['cell-lines-count']}}</span>
+    </h5>
+    <table st-table="doc['cell-lines']" class="table card-less-bottom">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Tissue</th>
+            <th>Class</th>
+        </tr>
+        <tr ng-if="doc['cell-lines-count']>searchThres">
+            <th colspan="2">
+                <input placeholder="Search" st-search type="search"
+                       class="form-control"/>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr st-select-row="entry" st-selected-entry="selectedEntry"
+            ng-repeat="entry in doc['cell-lines']">
+            <td class="col-xs-5">{{entry.name}}</td>
+            <td>{{entry.type ? entry.type : 'NA'}}</td>
+            <td>{{entry.tissue ? entry.tissue : 'NA'}}</td>
+            <td>{{entry.class ? entry.class : 'NA'}}</td>
+        </tr>
+        </tbody>
+        <tfoot ng-if="doc['cell-lines-count']>itemsPerPage">
+        <tr>
+            <td colspan="4">
+                <div st-pagination="" st-items-by-page="itemsPerPage"
+                     st-displayed-pages="" class="custom-pagination"></div>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+    </div>
+    <!-- <hr> -->
+    <div class="big-card-readouts-div">
+        <span class="big-card-readouts">Readouts:</span> {{doc.readouts.join(', ')}} 
+    </div>
+    <h6 ng-if="doc.released" class="big-card-released">
+                Released: {{doc['release-date'] | date: 'MM/dd/yyyy'}}
+            </h6>
+</div>
+ 
+<div class="modal-footer">
+	<!-- <button class="btn btn-primary" ng-click="ok()">Search</button> -->
+    <!-- <button class="btn btn-warning" ng-click="cancel()">Cancel</button> -->
+</div>

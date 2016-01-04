@@ -1,0 +1,121 @@
+@import 'normalize';
+@import 'base';
+@import 'clustergram';
+
+.win-too-small {
+  color: $color-blue;
+  margin: 100px;
+  text-align: center;
+  @media all and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.clust-content {
+}
+
+.view-wrapper {
+  display: inline-block;
+  float: right;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin: 0 auto;
+}
+
+.card-input-div {
+  width: 750px;
+  margin: 40px auto 0;
+}
+
+.card-input {
+  line-height: inherit;
+}
+
+.table {
+  width: 750px;
+  margin: 0 auto;
+}
+
+.releases {
+  width: 830px;
+  height: 500px;
+  overflow-y: scroll;
+  border-top: 1px solid $color-gray;
+  margin-top: 10px;
+}
+
+.dc-release {
+  width: 750px;
+  margin: 0 auto;
+  border-bottom: 1px solid $color-gray-light;
+}
+
+.title {
+  font-weight: 400;
+  text-align: center;
+}
+
+.emph {
+  font-weight: 700;
+}
+
+.highlight-primary {
+  color: $color-blue;
+}
+
+.dc-rel-header {
+  padding-top: 20px;
+
+  h4 {
+    margin: 0;
+    color: $color-blue;
+  }
+}
+
+.status-released {
+  color: $color-green;
+}
+
+.status-awaiting {
+  color: $color-orange;
+}
+
+.dc-rel-info {
+  p {
+    margin: 0;
+  }
+}
+
+.dc-rel-urls {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+
+  .fa {
+    width: 100%;
+    text-align: center;
+  }
+
+  a {
+    color: $color-blue-light;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-blue;
+    }
+  }
+}
+
+.push {
+  height: 180px;
+}
+
+.footer {
+  background-color: $footer-background-color;
+  border-top: 1px solid $footer-border-color;
+  height: 120px;
+}

@@ -1,0 +1,51 @@
+@import 'base';
+
+#row_container,
+#col_container {
+
+  text {
+    cursor: pointer;
+  }
+}
+
+#button-container {
+  margin-top: 20px;
+  margin-left: 40px;
+  text-align: left;
+  position: absolute;
+
+  .inactive {
+    opacity: .5;
+
+    &:hover {
+      background-color: $color-blue-light;
+    }
+  }
+
+  .active {
+    opacity: 1;
+  }
+}
+
+.clust-btn {
+  outline: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 6px 12px;
+  touch-action: manipulation;
+  cursor: pointer;
+  user-select: none;
+  color: $color-white;
+  background-color: $color-blue;
+  border-color: $color-blue-dark;
+}
+
+#svg-div {
+  height: 300px;
+  width: 800px;
+  margin: 0 auto !important;
+
+  text[text-anchor="center"] {
+    fill: $color-blue;
+  }
+}

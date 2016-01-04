@@ -32,3 +32,8 @@ h1{
   font-size: 25px;
   font-weight: bold;
 }
+
+.table-container {
+  height: 600px;
+  overflow-y: scroll;
+}

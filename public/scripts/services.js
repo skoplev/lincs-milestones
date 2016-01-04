@@ -37,7 +37,7 @@ services.factory('centerMap', function() {
         },
         "DTOXS": {
             fullName: "DToxS",
-            url: "http://research.mssm.edu/pst/DToxS/index.html",
+            url: "https://martip03.u.hpc.mssm.edu/",
             logo: "CSS/img/DTOXS_D.png",
             initial: 'D',
             // color:"#D80B8C"
@@ -77,7 +77,7 @@ services.factory('getSource', ['$http', 'dateFilter', '$q',
         var idx = window.location.href.lastIndexOf('/');
 
         $http
-            .get('http://amp.pharm.mssm.edu/LDR/api/releases/')
+            .get('http://amp.pharm.mssm.edu/LDR/api/releases/released')
             .success(function(data) {
                 deferred.resolve({
                     transformed: transform(data),
@@ -87,6 +87,7 @@ services.factory('getSource', ['$http', 'dateFilter', '$q',
 
 
         function transform(docs) {
+            // Only return object if released
             return _.map(docs, function(doc) {
 
                 var transformed = {};
@@ -106,7 +107,7 @@ services.factory('getSource', ['$http', 'dateFilter', '$q',
 
                 transformed['id'] = doc['_id'];
 
-                return transformed
+                return transformed;
             });
         }
 
@@ -126,7 +127,7 @@ services.factory('getSource', ['$http', 'dateFilter', '$q',
             });
 
             $http
-                .get('http://amp.pharm.mssm.edu/LDR/api/counts/')
+                .get('http://amp.pharm.mssm.edu/LDR/api/counts/released')
                 .success(function(data) {
                     count.assays = data.dataReleases;
                     count.cellLines = data.cellLines;

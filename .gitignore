@@ -5,3 +5,4 @@ R/sync.ffs_db
 .idea/*
 *.swp
 *.iml
+.settings
