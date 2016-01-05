@@ -3,6 +3,14 @@
 @import 'clustergram';
 @import 'icons';
 
+.center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 .win-too-small {
   color: $color-blue;
   margin: 100px;
