@@ -163,12 +163,17 @@ function Docent3Controller($window, $scope, $http, d3, d3Data, lodash) {
     // Assay RegExps
     var l1000RegEx = /L1000/i;
     var p100RegEx = /P100/i;
+    var gcpAbbrRegEx = /GCP/i;
+    var gcpRegEx = /Global Chromatin Profiling/i;
+
     var isL1000 = l1000RegEx.test(dsName) || l1000RegEx.test(assay);
     var isP100 = p100RegEx.test(dsName) || p100RegEx.test(assay);
+    var isGCP = gcpAbbrRegEx.test(dsName) || gcpAbbrRegEx.test(assay) ||
+      gcpRegEx.test(dsName) || gcpRegEx.test(dsName);
 
     release.useSlicer = isL1000;
-    release.usePiLINCS = isP100;
-    release.useMosaic = isP100;
+    release.usePiLINCS = isP100 || isGCP;
+    release.useMosaic = isP100 || isGCP;
   }
 
   function search(query) {
