@@ -45,7 +45,7 @@
       </div>
     </form>
   </div>
-  <table class="table card-less-bottom" id="summary">
+  <table class="table num-table card-less-bottom" id="summary">
     <tbody>
       <tr>
         <td>
@@ -111,11 +111,24 @@
         </div>
         <div class="dc-rel-info">
           <p>
-            <strong>Center:</strong> {{release.group.name}}</p>
+            <strong>Center:</strong> {{release.group.name}}
+          </p>
           <p>
-            <strong>Assay:</strong> {{release.metadata.assay[0].name}}</p>
+            <strong>Assay:</strong> {{release.metadata.assay[0].name}}
+          </p>
           <p>
-            <strong>Description:</strong> {{release.description}}</p>
+            <a ng-click="dc.showCells(release.metadata.cellLines)" class="clickable" ng-if="release.metadata.cellLines.length > 0">
+              <strong>Show Cell Lines</strong>
+            </a>
+          </p>
+          <p>
+            <a ng-click="dc.showPerturbagens(release.metadata.perturbagens)" class="clickable" ng-if="release.metadata.perturbagens.length > 0">
+              <strong>Show Perturbagens</strong>
+            </a>
+          </p>
+          <p>
+            <strong>Description:</strong> {{release.description}}
+          </p>
         </div>
         <div class="dc-rel-urls">
           <a ng-if="release.urls.metadataUrl.length > 0" ng-href="{{release.urls.metadataUrl}}" target="_blank">

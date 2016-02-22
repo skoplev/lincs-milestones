@@ -2,10 +2,28 @@
 
 angular
   .module('indexControllers', ['ngLodash', 'clustergram'])
-  .controller('Docent3Controller', Docent3Controller);
+  .controller('Docent3Controller', Docent3Controller)
+  .controller('cellsModalCtrl',
+  ['$scope', '$modalInstance', 'cells',
+      function($scope, $modalInstance, cells) {
+          $scope.cells = cells;
+          $scope.cellCount = cells.length;
+          $scope.cancel = function() {
+              $modalInstance.dismiss('cancel');
+          };
+      }])
+  .controller('perturbagensModalCtrl',
+  ['$scope', '$modalInstance', 'perturbagens',
+      function($scope, $modalInstance, perturbagens) {
+          $scope.perturbagens = perturbagens;
+          $scope.perturbagenCount = perturbagens.length;
+          $scope.cancel = function() {
+              $modalInstance.dismiss('cancel');
+          };
+      }]);
 
 /* @ngInject */
-function Docent3Controller($window, $scope, $http, d3, d3Data, lodash) {
+function Docent3Controller($window, $scope, $http, $modal, d3, d3Data, lodash) {
 
   var vm = this;
   var idx = window.location.href.lastIndexOf('/');
@@ -68,7 +86,7 @@ function Docent3Controller($window, $scope, $http, d3, d3Data, lodash) {
           delete cell["$$hashKey"];
       });
       $modal.open({
-          templateUrl: baseURL + 'cells.html',
+          templateUrl: vm.baseUrl + 'cells.html',
           controller: 'cellsModalCtrl',
           resolve: {
               cells: function() {
@@ -90,7 +108,7 @@ function Docent3Controller($window, $scope, $http, d3, d3Data, lodash) {
           delete perturbagen["$$hashKey"];
       });
       $modal.open({
-          templateUrl: baseURL + 'perturbagens.html',
+          templateUrl: vm.baseUrl + 'perturbagens.html',
           controller: 'perturbagensModalCtrl',
           resolve: {
               perturbagens: function() {
