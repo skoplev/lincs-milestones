@@ -4,23 +4,25 @@ angular
   .module('indexControllers', ['ngLodash', 'clustergram'])
   .controller('Docent3Controller', Docent3Controller)
   .controller('cellsModalCtrl',
-  ['$scope', '$modalInstance', 'cells',
-      function($scope, $modalInstance, cells) {
-          $scope.cells = cells;
-          $scope.cellCount = cells.length;
-          $scope.cancel = function() {
-              $modalInstance.dismiss('cancel');
-          };
-      }])
+  ['$scope', '$location', '$modalInstance', 'cells',
+    function($scope, $location, $modalInstance, cells) {
+      $location.hash('cell-modal-header');
+      $scope.cells = cells;
+      $scope.cellCount = cells.length;
+      $scope.cancel = function() {
+        $modalInstance.dismiss('cancel');
+      };
+    }])
   .controller('perturbagensModalCtrl',
-  ['$scope', '$modalInstance', 'perturbagens',
-      function($scope, $modalInstance, perturbagens) {
-          $scope.perturbagens = perturbagens;
-          $scope.perturbagenCount = perturbagens.length;
-          $scope.cancel = function() {
-              $modalInstance.dismiss('cancel');
-          };
-      }]);
+  ['$scope', '$location', '$modalInstance', 'perturbagens',
+    function($scope, $location, $modalInstance, perturbagens) {
+      $location.hash('pert-modal-header');
+      $scope.perturbagens = perturbagens;
+      $scope.perturbagenCount = perturbagens.length;
+      $scope.cancel = function() {
+        $modalInstance.dismiss('cancel');
+      };
+    }]);
 
 /* @ngInject */
 function Docent3Controller($window, $scope, $http, $modal, d3, d3Data, lodash) {
