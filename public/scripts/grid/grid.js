@@ -56,6 +56,52 @@ function Docent3Controller($window, $scope, $http, d3, d3Data, lodash) {
     zoom: false,
     super_font_size: '24px'
   };
+  vm.showCells = showCells;
+  vm.showPerturbagens = showPerturbagens;
+
+  function showCells(cells) {
+      if (cells[0] == "TBD") {
+          // normalize the input format for modal
+          cells = [{ name: "TBD" }];
+      }
+      cells.forEach(function(cell) {
+          delete cell["$$hashKey"];
+      });
+      $modal.open({
+          templateUrl: baseURL + 'cells.html',
+          controller: 'cellsModalCtrl',
+          resolve: {
+              cells: function() {
+                  return cells;
+              }/*,
+              commonKeys: function() {
+                  return getCommonKeys(cells);
+              }*/
+          }
+      });
+  };
+
+  function showPerturbagens(perturbagens) {
+      if (perturbagens[0] == "TBD") {
+          // normalize the input format for modal
+          perturbagens = [{ name: "TBD" }]
+      }
+      perturbagens.forEach(function(perturbagen) {
+          delete perturbagen["$$hashKey"];
+      });
+      $modal.open({
+          templateUrl: baseURL + 'perturbagens.html',
+          controller: 'perturbagensModalCtrl',
+          resolve: {
+              perturbagens: function() {
+                  return perturbagens;
+              }/*,
+              commonKeys: function() {
+                  return getCommonKeys(perturbagens);
+              }*/
+          }
+      });
+  };
 
   function clickLabel(label, rowCol) {
     vm.resultIsSearch = false;
@@ -164,20 +210,38 @@ function Docent3Controller($window, $scope, $http, d3, d3Data, lodash) {
     var l1000RegEx = /L1000/i;
     var p100RegEx = /P100/i;
     var gcpAbbrRegEx = /GCP/i;
+    var rnaSeqRegEx = /RNA[-]?Seq/i;
     var gcpRegEx = /Global Chromatin Profiling/i;
 
     var isL1000 = l1000RegEx.test(dsName) || l1000RegEx.test(assay);
     var isP100 = p100RegEx.test(dsName) || p100RegEx.test(assay);
+    var isRNASeq = rnaSeqRegEx.test(dsName) || rnaSeqRegEx.test(assay);
     var isGCP = gcpAbbrRegEx.test(dsName) || gcpAbbrRegEx.test(assay) ||
       gcpRegEx.test(dsName) || gcpRegEx.test(dsName);
 
     release.useSlicer = isL1000;
     release.usePiLINCS = isP100 || isGCP;
     release.useMosaic = isP100 || isGCP;
+
+    if (isRNASeq) {
+      if (release.group.name === 'NeuroLINCS') {
+        release.iLINCSLink = 'http://eh3.uc.edu/GenomicsPortals/DatasetLandingPage.do?data_set=LDS-1238';
+      } else if (release.group.name === 'DTOXS') {
+        var upDate = release.releaseDates.upcoming.setHours(0, 0, 0, 0);
+        var juneDate = new Date('6/30/2015').setHours(0, 0, 0, 0);
+        var augustDate = new Date('8/20/2015').setHours(0, 0, 0, 0);
+        // Check if release date is 6/30/15
+        if (upDate === juneDate) {
+          release.iLINCSLink = 'http://eh3.uc.edu/GenomicsPortals/DatasetLandingPage.do?data_set=LDS-1237';
+        } else if (upDate === augustDate) {
+          release.iLINCSLink = 'http://eh3.uc.edu/GenomicsPortals/DatasetLandingPage.do?data_set=LDS-1239';
+        }
+      }
+    }
   }
 
   function search(query) {
-    if (query.length) {
+    if (!!query && query.length) {
       vm.searchQ = query;
     } else if (!vm.searchQ.length) {
       return;
@@ -189,7 +253,7 @@ function Docent3Controller($window, $scope, $http, d3, d3Data, lodash) {
 
     d3.selectAll('.row_label_text').each(function(d, i) {
       var label = d3.select(this).text();
-      if (vm.searchQ === label && !labelSelected) {
+      if (vm.searchQ.toLowerCase() === label.toLowerCase() && !labelSelected) {
         d3.select(this).on('click').apply(this, [d, i]);
         labelSelected = true;
       }
@@ -197,7 +261,7 @@ function Docent3Controller($window, $scope, $http, d3, d3Data, lodash) {
 
     d3.selectAll('.col_label_text').each(function(d, i) {
       var label = d3.select(this).text();
-      if (vm.searchQ === label && !labelSelected) {
+      if (vm.searchQ.toLowerCase() === label.toLowerCase() && !labelSelected) {
         d3.select(this).on('click').apply(this, [d, i]);
         labelSelected = true;
       }

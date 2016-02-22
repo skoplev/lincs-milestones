@@ -133,12 +133,21 @@
             <br />
             Access Data
           </a>
-          <a ng-if="release.urls.pubMedUrl.length > 0" ng-href="{{release.urls.pubMedUrl}}" target="_blank">
+          <a ng-if="release.urls.pubMedUrl.length > 0"
+            ng-href="{{release.urls.pubMedUrl}}" target="_blank">
             <i class="fa fa-link fa-2x"></i>
             <br />
             View on PubMed
           </a>
-          <a ng-if="release.useSlicer" ng-href="http://amp.pharm.mssm.edu/Slicr" target="_blank">
+          <a ng-if="release.useSlicer && !dc.query.cellLine"
+            ng-href="http://amp.pharm.mssm.edu/Slicr" target="_blank">
+            <!-- <img class="slicr-icon" src="http://amp.pharm.mssm.edu/Slicr/css/img/pizza2.png" /> -->
+            <i class="fa fa-pie-chart fa-2x"></i>
+            <br />
+            Analyze with Slicr<strong class="highlight-orange">*</strong>
+          </a>
+          <a ng-if="release.useSlicer && dc.query.cellLine && dc.query.cellLine !== 'cell-free'"
+            ng-href="http://amp.pharm.mssm.edu/Slicr/#/search/{{dc.query.cellLine}}" target="_blank">
             <!-- <img class="slicr-icon" src="http://amp.pharm.mssm.edu/Slicr/css/img/pizza2.png" /> -->
             <i class="fa fa-pie-chart fa-2x"></i>
             <br />
@@ -154,8 +163,15 @@
             <br />
             Analysis with piLINCS<strong class="highlight-orange">*</strong>
           </a>
+          <a ng-if="release.iLINCSLink && release.iLINCSLink.length"
+            ng-href="{{release.iLINCSLink}}" target="_blank">
+            <i class="fa fa-info-circle fa-2x"></i>
+            <br />
+            Analysis with iLINCS<strong class="highlight-orange">*</strong>
+          </a>
         </div>
-        <p ng-if="release.useSlicer || release.useMosaic || release.usePiLINCS" class="center highlight-orange">
+        <p ng-if="release.useSlicer || release.useMosaic || release.usePiLINCS"
+          class="center highlight-orange">
           *BD2K LINCS-DCIC tool
         </p>
       </div>

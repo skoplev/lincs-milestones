@@ -44,7 +44,7 @@ gulp.task('scss', function() {
 
 gulp.task('build', function(callback) {
   runSequence('scss', 'js' , callback);
-  });
+});
 
 gulp.task('build:watch', function(callback) {
   runSequence('build' , function() {
