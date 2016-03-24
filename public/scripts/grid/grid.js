@@ -1,9 +1,10 @@
 /*eslint camelcase: 0*/
 
-angular
-  .module('indexControllers', ['ngLodash', 'clustergram'])
-  .controller('Docent3Controller', Docent3Controller)
-  .controller('cellsModalCtrl',
+var mod = angular.module('indexControllers', ['ngLodash', 'clustergram']);
+
+mod.controller('Docent3Controller', Docent3Controller);
+
+mod.controller('cellsModalCtrl',
   ['$scope', '$location', '$modalInstance', 'cells',
     function($scope, $location, $modalInstance, cells) {
       $location.hash('cell-modal-header');
@@ -12,8 +13,9 @@ angular
       $scope.cancel = function() {
         $modalInstance.dismiss('cancel');
       };
-    }])
-  .controller('perturbagensModalCtrl',
+    }]);
+
+mod.controller('perturbagensModalCtrl',
   ['$scope', '$location', '$modalInstance', 'perturbagens',
     function($scope, $location, $modalInstance, perturbagens) {
       $location.hash('pert-modal-header');
@@ -40,7 +42,7 @@ function Docent3Controller($window, $scope, $http, $modal, d3, d3Data, lodash) {
     'Collagen I',
     'L1000',
     'MEMA',
-    'MCF7',
+    'MCF7'
   ];
   vm.query = {
     dataset: '',
@@ -98,12 +100,12 @@ function Docent3Controller($window, $scope, $http, $modal, d3, d3Data, lodash) {
               }*/
           }
       });
-  };
+  }
 
   function showPerturbagens(perturbagens) {
       if (perturbagens[0] == "TBD") {
           // normalize the input format for modal
-          perturbagens = [{ name: "TBD" }]
+          perturbagens = [{ name: "TBD" }];
       }
       perturbagens.forEach(function(perturbagen) {
           delete perturbagen["$$hashKey"];
@@ -120,7 +122,7 @@ function Docent3Controller($window, $scope, $http, $modal, d3, d3Data, lodash) {
               }*/
           }
       });
-  };
+  }
 
   function clickLabel(label, rowCol) {
     vm.resultIsSearch = false;
@@ -174,8 +176,7 @@ function Docent3Controller($window, $scope, $http, $modal, d3, d3Data, lodash) {
         var datasetsWithPerts = [];
         lodash.each(response.data, function(obj) {
           if (obj.released) {
-            obj.releaseDates.upcoming = new Date(obj.releaseDates
-              .upcoming);
+            obj.releaseDates.upcoming = new Date(obj.releaseDates.upcoming);
             datasetsWithPerts.push(obj);
           }
         });
@@ -331,7 +332,7 @@ function Docent3Controller($window, $scope, $http, $modal, d3, d3Data, lodash) {
       lodash.each(response.data, function(release) {
         if (release.released) {
           release.releaseDates.upcoming = new Date(release.releaseDates.upcoming);
-          checkForIcons(release)
+          checkForIcons(release);
           vm.releases.push(release);
         }
       });

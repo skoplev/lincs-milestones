@@ -1,3 +1,4 @@
+/*
 html {
   width: 850px;
   margin: 0 auto;
@@ -14,6 +15,8 @@ a {
 a {
     color: #3593b1;
 }
+*/
+
 .st-sort:before{
   content:'\25b6';
 }
@@ -24,9 +27,12 @@ a {
     content: '\25BC';
 }
 
+/*
 th {
 	cursor:default;
 }
+*/
+
 .table > thead > tr > th {
     border-bottom: 1px solid #ddd;
 }
