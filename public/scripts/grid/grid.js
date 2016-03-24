@@ -26,7 +26,6 @@ angular
 
 /* @ngInject */
 function Docent3Controller($window, $scope, $http, $modal, d3, d3Data, lodash) {
-
   var vm = this;
   var idx = window.location.href.lastIndexOf('/');
   vm.baseUrl = $window.location.href.slice(0, idx + 1);
