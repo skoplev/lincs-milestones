@@ -1,4 +1,4 @@
-var indexControllers = angular.module('indexControllers', ["services"]);
+var indexControllers = angular.module('indexCardsControllers', ["services"]);
 var idx = window.location.href.lastIndexOf('/');
 var baseURL = window.location.href.slice(0, idx + 1);
 indexControllers.controller('cardsCtrl', ['$scope', '$modal', 'centerMap', 'getSource',

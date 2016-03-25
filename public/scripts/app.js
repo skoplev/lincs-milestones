@@ -1,8 +1,2 @@
-
 var Milestones = angular.module('Milestones', [
-  'indexControllers', 'smart-table', 'ui.bootstrap']);
-
-// var Milestones = angular.module('Milestones', [
-//   'indexControllers', 'smart-table']);
-
-
+  'indexControllers', 'indexGridControllers', 'indexCardsControllers', 'smart-table', 'ui.bootstrap']);

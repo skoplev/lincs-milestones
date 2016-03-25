@@ -54,7 +54,7 @@ indexControllers.controller('tableCtrl', ['$scope', '$modal', 'centerMap', 'getS
             }
 
             source.summary.then(function(counts) {
-                console.log(counts);
+                // console.log(counts);
                 countUpTo('center', 0, counts.center, 1, 50);
                 countUpTo('assays', 0, counts.assays, 1, 10);
                 countUpTo('perturbagens', 0, counts.perturbagens, 50, 10);
